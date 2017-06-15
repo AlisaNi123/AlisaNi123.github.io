@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/hexo-theme-huxblog/img/favicon.ico">
+
+    <title>
+        
+          常用的adb命令 - Alisa的博客 | Alisa&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://kaijun.rocks/hexo-theme-huxblog/hexo-theme-huxblog/2015/05/29/常用adb命令/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/hexo-theme-huxblog/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/hexo-theme-huxblog/css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/hexo-theme-huxblog/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/hexo-theme-huxblog/">Alisa&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/hexo-theme-huxblog/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/hexo-theme-huxblog/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/hexo-theme-huxblog/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/hexo-theme-huxblog/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://kaijun.rocks/hexo-theme-huxblog/hexo-theme-huxblog/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('post-bg-2015.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/hexo-theme-huxblog/tags/#常用工具" title="常用工具">常用工具</a>
+                        
+                    </div>
+                    <h1>常用的adb命令</h1>
+                    <h2 class="subheading"> &quot;adb调试手机常用命令&quot;</h2>
+                    <span class="meta">
+                        Posted by alisa on
+                        2015-05-29
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>1、adb devices  查看设备 这个命令是查看当前连接的设备， 连接到计算机的android设备或者模拟器将会列出显示（如图）<br><img src="http://upload-images.jianshu.io/upload_images/4047685-2cd5c1cab04a4a10.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>只提示“List of devices attached” 没有罗列设备，两种情况下遇到过这个问题：（1）手机设置导致，确定手机已经连接到电脑上，且手机 “设置-&gt;开发者选项-&gt;开发人员选项”和“USB调试”为打开状态，在“是否允许USB调试”点击确定；（2）adb版本太老了，更新一下到最新的版本试试。</p>
+<p>2、 adb install (apk在PC上的路径/)*.apk （会将apk文件上传到了模拟器自带操作系统的data/app目录下了） 安装应用</p>
+<p>3、adb uninstall   apk的包名（用EC切换到DDMS的File Explorer中查看，data/data下）， 卸载app<br>也可以使用：adb shell pm uninstall  com.funnybaby.*（包名）卸载</p>
+<p>4、adb shell 通过命令，就可以进入设备或模拟器的shell环境中，在这个Linux Shell中，你可以执行各种Linux的命令<br><img src="http://upload-images.jianshu.io/upload_images/4047685-35927cf78d0520c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>另外如果只想执行一条shell命令，可以采用以下的方式：<br>adb shell [command]<br>如：adb shell dmesg会打印出内核的调试信息</p>
+<p>5、am<br>你也可以在adb shell前执行am命令：<br>关于一些am命令的介绍：<br>start [options] ：启动activity通过指定的intent参数。具体intent参数参照官方表。<br>startservice [options] ： 启动service通过指定的intent参数。具体intent跟start命令参数相同。<br>force-stop ： 强制停止指定的package包应用。<br>kill<br>[options]<br>：杀死指定package包应用进程，该命令在安全模式下杀死进程，不影响用户体验。参数选项：–user |<br>all | current: 指定user进程杀死，如果不指定默认为所有users。（关于USER_ID下面会介绍到）<br>kill-all ：杀死所有的后台进程。<br>broadcast<br>[options] ：发送一个intent。具体intent参数参照start命令参数。参数选项：–user<br>| all | current: 指定user进程杀死，如果不指定默认为所有users。<br>instrument [options] ：测试命令，不多作介绍。<br>profile start ：在进程中运行profile，分析结果写到里。<br>profile stop ：停止profile。<br>set-debug-app [options] ：设置package包应用为debug模式。参数选项：-w|–persistent：等待进入调试模式，保留值。<br>clear-debug-app ：清空之前用set-debug-app命令设置的package包应用。</p>
+<p>6、adb shell am force-stop<br>作用：强制关闭一个应用程序<br>举例：adb shell am force-stop com.lt.test<br>adb shell am force-stop比使用 kill -9要方便</p>
+<p>7、adb shell am start -a android.intent.action.VIEW<br>作用：启动一个应用程序</p>
+<p>8、adb shell pm list packages列出手机所有app包名<br><img src="http://upload-images.jianshu.io/upload_images/4047685-d257f02204b9eff1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>9、adb shell logcat &gt; C:\logcat\logname.txt(自定义日志存放的位置和名称)<br>adb logcat -f /sdcard/log.txt<em>* 命令, 注意这个log文件是输出到手机上，需要指定合适的路径。<br>adb logcat | grep “E.</em>”过滤等级是E的日志<br>adb logcat *:F<br>可截取崩溃日志，具体<br>截取log保存到c盘目录下：adb shell logcat &gt; C:\logcat\logname.txt<br>手机操作<br>操作结束后ctrl+c退出，去上面C:\logcat\位置去查询logname.txt日志</p>
+<p>10、清除应用数据与缓存<br>有些时候我们测试需要清除数据与缓存，则需要用到如下命令：<br>adb shell pm clear 如：adb shell pm clear com.stormzhang.demo</p>
+<p>11、查询显示当前界面的activity<br>adb shell dumpsys activity activities</p>
+<p>12//这条命令相当于按了设备的Backkey键<br>adb shell input keyevent 4   </p>
+<p> //可以解锁屏幕</p>
+<p>adb shell input keyevent  82 </p>
+<p>//在屏幕上做划屏操作，前四个数为坐标点，后面是滑动的时间（单位毫秒）</p>
+<p>adb shell input swipe 50 250 250 250 500 </p>
+<p>//在屏幕上点击坐标点x=50  y=250的位置。</p>
+<p>adb shell input tap 50 250 </p>
+<p>//输入字符abc</p>
+<p>adb shell input text abc</p>
+<p>每个数字与keycode对应表如下：<br>0 –&gt;  “KEYCODE_UNKNOWN”<br>1 –&gt;  “KEYCODE_MENU”<br>2 –&gt;  “KEYCODE_SOFT_RIGHT”<br>3 –&gt;  “KEYCODE_HOME”<br>4 –&gt;  “KEYCODE_BACK”<br>5 –&gt;  “KEYCODE_CALL”<br>6 –&gt;  “KEYCODE_ENDCALL”<br>7 –&gt;  “KEYCODE_0”<br>8 –&gt;  “KEYCODE_1”<br>9 –&gt;  “KEYCODE_2”<br>10 –&gt;  “KEYCODE_3”<br>11 –&gt;  “KEYCODE_4”<br>12 –&gt;  “KEYCODE_5”<br>13 –&gt;  “KEYCODE_6”<br>14 –&gt;  “KEYCODE_7”<br>15 –&gt;  “KEYCODE_8”<br>16 –&gt;  “KEYCODE_9”<br>17 –&gt;  “KEYCODE_STAR”<br>18 –&gt;  “KEYCODE_POUND”<br>19 –&gt;  “KEYCODE_DPAD_UP”<br>20 –&gt;  “KEYCODE_DPAD_DOWN”<br>21 –&gt;  “KEYCODE_DPAD_LEFT”<br>22 –&gt;  “KEYCODE_DPAD_RIGHT”<br>23 –&gt;  “KEYCODE_DPAD_CENTER”<br>24 –&gt;  “KEYCODE_VOLUME_UP”<br>25 –&gt;  “KEYCODE_VOLUME_DOWN”<br>26 –&gt;  “KEYCODE_POWER”<br>27 –&gt;  “KEYCODE_CAMERA”<br>28 –&gt;  “KEYCODE_CLEAR”<br>29 –&gt;  “KEYCODE_A”<br>30 –&gt;  “KEYCODE_B”<br>31 –&gt;  “KEYCODE_C”<br>32 –&gt;  “KEYCODE_D”<br>33 –&gt;  “KEYCODE_E”<br>34 –&gt;  “KEYCODE_F”<br>35 –&gt;  “KEYCODE_G”<br>36 –&gt;  “KEYCODE_H”<br>37 –&gt;  “KEYCODE_I”<br>38 –&gt;  “KEYCODE_J”<br>39 –&gt;  “KEYCODE_K”<br>40 –&gt;  “KEYCODE_L”<br>41 –&gt;  “KEYCODE_M”<br>42 –&gt;  “KEYCODE_N”<br>43 –&gt;  “KEYCODE_O”<br>44 –&gt;  “KEYCODE_P”<br>45 –&gt;  “KEYCODE_Q”<br>46 –&gt;  “KEYCODE_R”<br>47 –&gt;  “KEYCODE_S”<br>48 –&gt;  “KEYCODE_T”<br>49 –&gt;  “KEYCODE_U”<br>50 –&gt;  “KEYCODE_V”<br>51 –&gt;  “KEYCODE_W”<br>52 –&gt;  “KEYCODE_X”<br>53 –&gt;  “KEYCODE_Y”<br>54 –&gt;  “KEYCODE_Z”<br>55 –&gt;  “KEYCODE_COMMA”<br>56 –&gt;  “KEYCODE_PERIOD”<br>57 –&gt;  “KEYCODE_ALT_LEFT”<br>58 –&gt;  “KEYCODE_ALT_RIGHT”<br>59 –&gt;  “KEYCODE_SHIFT_LEFT”<br>60 –&gt;  “KEYCODE_SHIFT_RIGHT”<br>61 –&gt;  “KEYCODE_TAB”<br>62 –&gt;  “KEYCODE_SPACE”<br>63 –&gt;  “KEYCODE_SYM”<br>64 –&gt;  “KEYCODE_EXPLORER”<br>65 –&gt;  “KEYCODE_ENVELOPE”<br>66 –&gt;  “KEYCODE_ENTER”<br>67 –&gt;  “KEYCODE_DEL”<br>68 –&gt;  “KEYCODE_GRAVE”<br>69 –&gt;  “KEYCODE_MINUS”<br>70 –&gt;  “KEYCODE_EQUALS”<br>71 –&gt;  “KEYCODE_LEFT_BRACKET”<br>72 –&gt;  “KEYCODE_RIGHT_BRACKET”<br>73 –&gt;  “KEYCODE_BACKSLASH”<br>74 –&gt;  “KEYCODE_SEMICOLON”<br>75 –&gt;  “KEYCODE_APOSTROPHE”<br>76 –&gt;  “KEYCODE_SLASH”<br>77 –&gt;  “KEYCODE_AT”<br>78 –&gt;  “KEYCODE_NUM”<br>79 –&gt;  “KEYCODE_HEADSETHOOK”<br>80 –&gt;  “KEYCODE_FOCUS”<br>81 –&gt;  “KEYCODE_PLUS”<br>82 –&gt;  “KEYCODE_MENU”<br>83 –&gt;  “KEYCODE_NOTIFICATION”<br>84 –&gt;  “KEYCODE_SEARCH”<br>85 –&gt;  “TAG_LAST_KEYCODE”</p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/hexo-theme-huxblog/2015/06/23/Eclipse常用命令/" data-toggle="tooltip" data-placement="top" title="Eclipse常用快捷键">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/hexo-theme-huxblog/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/hexo-theme-huxblog/tags/#常用工具" title="常用工具">常用工具</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="" target="_blank">Alisa&#39;s Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">Foo</a></li>
+                    
+                        <li><a href="#" target="_blank">Bar</a></li>
+                    
+                        <li><a href="#" target="_blank">Example Friends</a></li>
+                    
+                        <li><a href="#" target="_blank">It helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "hexo-theme-huxblog";
+    var disqus_identifier = "http://kaijun.rocks/hexo-theme-huxblog/2015/05/29/常用adb命令/";
+    var disqus_url = "http://kaijun.rocks/hexo-theme-huxblog/2015/05/29/常用adb命令/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/none">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/none">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/none">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/none">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/alisa66666">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/none">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Alisa&#39;s Blog 2017 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/hexo-theme-huxblog/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/hexo-theme-huxblog/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/hexo-theme-huxblog/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://kaijun.rocks/hexo-theme-huxblog/hexo-theme-huxblog/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-49627206-1';
+    var _gaDomain = 'huangxuan.me';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '4cc1f2d8f3067386cc5cdb626a202900';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://kaijun.rocks/hexo-theme-huxblog/hexo-theme-huxblog/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

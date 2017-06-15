@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/hexo-theme-huxblog/img/favicon.ico">
+
+    <title>
+        
+          MQTT简介 - Alisa的博客 | Alisa&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://kaijun.rocks/hexo-theme-huxblog/hexo-theme-huxblog/2016/10/29/MQTT/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/hexo-theme-huxblog/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/hexo-theme-huxblog/css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/hexo-theme-huxblog/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/hexo-theme-huxblog/">Alisa&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/hexo-theme-huxblog/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/hexo-theme-huxblog/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/hexo-theme-huxblog/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/hexo-theme-huxblog/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://kaijun.rocks/hexo-theme-huxblog/hexo-theme-huxblog/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('post-bg-2015.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/hexo-theme-huxblog/tags/#常用工具" title="常用工具">常用工具</a>
+                        
+                    </div>
+                    <h1>MQTT简介</h1>
+                    <h2 class="subheading"> &quot;即时通讯协议&quot;</h2>
+                    <span class="meta">
+                        Posted by alisa on
+                        2016-10-29
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p><strong><em>MQTT</em></strong>是轻量级<em>基于代理的**</em>发布/订阅<em>**的消息传输协议</em>，它可以通过很少的代码和带宽和远程设备连接。例如通过卫星和代理连接，通过拨号和医疗保健提供者连接，以及在一些自动化或小型设备上，而且由于小巧，省电，协议开销小和能高效的向一和多个接收者传递信息，故同样适用于称动应用设备上。<br>相信在想深入学习这协议必是奔着解决某个问题而来的，上面给出了适用的场景，我之所以想深入的学习和了解这个协议，理由如下：<br>1、可以实现手机消息推送（PUSH）<br>2、协议简单，最小的头部只需2个字节，特别适合于嵌入式中。<br>3、这是个了解什么是协议绝好的例子。相比于其它复杂的协议例如tcp，http协议，至少说明文档看的下去。<br>在这里，我以推送为例子说明，虽然现在现成的推送解决方案已经比较成熟，但是这个Repeat ReInvent the Whell还是要做一下，什么都是拿来主义，和搬运工有什么区别。</p>
+<p><strong>一、需要的环境：</strong><br>1、PHP+Apache或Nginx<br>2、安装开源代理<a href="http://www.xuebuyuan.com/" target="_blank" rel="external">程序</a>Mosquitto，这里用其做为代理服务器，负责连接和分发。<br>安装方法很简单，<a href="http://mosquitto.org/files/" target="_blank" rel="external">http://mosquitto.org/files/</a>   binary是编译好的，source是源码安装需要的（make &amp; make install 就行）<br>唯 一要配置的就是在解压后的config.mk,安装完后设置文件是mosquitto.conf<br>当然主要是设置是否支持ssl，还有就是config.mk最下面的安装位置的设定。这里一切默认。<br>默认启动是绑定的IP是本地IP，端口是1883可以在mosquitto.conf里设置（要去掉前面的#字注释），linux 中 -c 可以指定设置文件并运行<br>比 如： mosquitto -c /etc/mosquitto.conf</p>
+<p><strong>二、协议初解</strong><br>先说一下整个协议的构造，整体上协议可拆分为：<br>            <strong>        固定头部+可变头部+消息体</strong><br>协议说白了就是对于双方通信的一个约定，比如传过来一段字符流，第1个字节表示什么，第2个字节表示什么。。。。一个约定。<br>所以在固定头部的构造如下：<br><img src="http://upload-images.jianshu.io/upload_images/4047685-334dcd72e1ef1886?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>1、MessageType(0和15保留，共占4个字节)</p>
+<p>public $operations=array( “MQTT_CONNECT”=&gt;1,//请求连接 “MQTT_CONNACK”=&gt;2,//请求应答 “MQTT_PUBLISH”=&gt;3,//发布消息 “MQTT_PUBACK”=&gt;4,//发布应答 “MQTT_PUBREC”=&gt;5,//发布已接收，保证传递1 “MQTT_PUBREL”=&gt;6,//发布释放，保证传递2 “MQTT_PUBCOMP”=&gt;7,//发布完成，保证传递3 “MQTT_SUBSCRIBE”=&gt;8,//订阅请求 “MQTT_SUBACK”=&gt;9,//订阅应答 “MQTT_UNSUBSCRIBE”=&gt;10,//取消订阅 “MQTT_UNSUBACK”=&gt;11,//取消订阅应答 “MQTT_PINGREQ”=&gt;12,//ping请求 “MQTT_PINGRESP”=&gt;13,//ping响应 “MQTT_DISCONNECT”=&gt;14//断开连接 );</p>
+<p>2、DUP flag<br> 其是用来在保证消息传输可靠的，如果设置为1，则在下面的变长头部里多加MessageId,并需要回复确认，保证消息传输完成，但不能用于检测消息重复发送。</p>
+<p>3、Qos<br>主要用于PUBLISH（发布态）消息的，保证消息传递的次数。<br>00表示最多一次 即&lt;=1<br>01表示至少一次  即&gt;=1<br>10表示一次，即==1<br>11保留后用</p>
+<p>4、Retain<br> 主要用于PUBLISH(发布态)的消息，表示服务器要保留这次推送的信息，如果有新的订阅者出现，就把这消息推送给它。如果不设那么推送至当前订阅的就释放了。</p>
+<p>5、固定头部的byte 2<br>是用来保存接下去的变长头部+消息体的总大小的。<br>但是不是并不是直接保存的，同样也是可以扩展的，其机制是，前7位用于保存长度，后一部用做标识。<br>我举个例了，即如果计算出后面的大小为0&lt;length&lt;=127的，正常保存<br>如果是127&lt;length&lt;16383的，则需要二个字节保存了，将第一个字节的最大的一位置1,表示未完。然后第二个字节继续存。<br>拿130来说，第一个字节存10000011,第二个字节存000000001，也就是0x83,0x01,把两个字节连起来看，第二个字节权重从2的8次开始。<br>同起可以加第3个字节，最多可以加至第4个字节。故MQTT协议最多可以实现<em>268 435 455 (0xFF, 0xFF, 0xFF, 0x7F)将近<strong>256M</strong>的数据。可谓能伸能缩。</em><br> 可变头部<br><img src="http://upload-images.jianshu.io/upload_images/4047685-18e7427b0c9e0193?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>这个是可变头部的全貌。</p>
+<p>1、首先最上面的8个字节是Protocol Name(编码名)，UTF编码的字符“MQIsdp”，头两个是编码名提长为6。<br>这里多说一些，接下去的协议多采用这种方式组合，即头两个字节表示下一部分的长，然后后面跟上内容。这里头两个字节长为6，下面跟6个字符“MQIsdp”。</p>
+<p>2、Protocol Version，协议版本号，v3 也是固定的。</p>
+<p>3、Connect Flag，连接标识，有点像固定头部的。8位分别代表不同的标志。第1个字节保留。<br>Clean Session,Will flag，Will Qos, Will Retain都是相对于CONNECT消息来说的。<br><strong>Clean Session:</strong>0表示如果订阅的客户机断线了，那么要保存其要推送的消息，如果其重新连接时，则将这些消息推送。<br>                            1表示消除，表示客户机是第一次连接，消息所以以前的连接信息。<br><strong>Will Flag</strong>，表示如果客户机在不是在发送DISCONNECT消息中断，比如IO错误等，将些置为1,要求重传。并且下且的WillQos和WillRetain也要设置，消息体中的Topic和MessageID也要设置，就是表示发生了错误，要重传。<br><strong>Will Qos</strong>，在CONNECT非正常情况下设置，一般如果标识了WillFlag，那么这个位置也要标识。<br><strong>Will RETAIN</strong>：同样在CONNECT中，如果标识了WillFlag,那么些位也一定要标识<br>usename flag和passwordflag，用来标识是否在消息体中传递用户和密码，只有标识了，消息体中的用户名和密码才用效，只标记密码而不标记用户名是不合法的。</p>
+<p>4、Keep Alive，表示响应时间，如果这个时间内，连接或发送操作未完成，则断开tcp连接，表示离线。</p>
+<p><strong>5、Connect Return Code</strong>即通常于CONNACK消息中，表示返回的连接情况，我可以通过此检验连接情况。<br><img src="http://upload-images.jianshu.io/upload_images/4047685-c610da521064aca9?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>6、Topic Name，</strong>订阅消息标识，MQTT是基于订阅/发布的消息，那么这个就是消息订阅的标识，像新闻客户端里的订阅不同的栏目一样。用于区别消息的推送类别。<br>主要用于PUBLISH和SUBSCRIBE中。最大可支持<strong>32767个</strong>字符，即4个字节。<br>消息体（PayLoad）<br>只有3种消息有消息体<strong>CONNECT，SUBSCRIBE，SUBACK</strong><br><strong>CONNECT</strong>主要是客户机的ClientID，订阅的Topic和Message以及用户名和密码，其于变长头部中的will是对应的。<br><strong>SUBSCRIBE</strong>是包含了一系列的要订阅的主题以及QOS。<br><strong>SUBACK</strong>是用服务器对于SUBSCRIBE所申请的主题及QOS进行确认和回复。<br>而<strong>PUBLISH</strong>是消息体中则保存推送的消息，以二进制形式，当然这里的编辑可自定义。</p>
+<p><strong>7、Message Identifier</strong><br>包含于<strong><em>PUBLISH, PUBACK, PUBREC, PUBREL, PUBCOMP, SUBSCRIBE, SUBACK, UNSUBSCRIBE, UNSUBACK.</em></strong><br><em>其为16位字符表示，用于在Qos为1或2时标识Message的，保证Message传输的可靠性。</em><br><em>至于具体的消息例子，我们在后面的代码中慢慢体现。</em></p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/hexo-theme-huxblog/2015/12/21/js-mesview/" data-toggle="tooltip" data-placement="top" title="js消息对话框">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/hexo-theme-huxblog/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/hexo-theme-huxblog/tags/#常用工具" title="常用工具">常用工具</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="" target="_blank">Alisa&#39;s Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">Foo</a></li>
+                    
+                        <li><a href="#" target="_blank">Bar</a></li>
+                    
+                        <li><a href="#" target="_blank">Example Friends</a></li>
+                    
+                        <li><a href="#" target="_blank">It helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "hexo-theme-huxblog";
+    var disqus_identifier = "http://kaijun.rocks/hexo-theme-huxblog/2016/10/29/MQTT/";
+    var disqus_url = "http://kaijun.rocks/hexo-theme-huxblog/2016/10/29/MQTT/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/none">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/none">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/none">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/none">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/alisa66666">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/none">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Alisa&#39;s Blog 2017 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/hexo-theme-huxblog/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/hexo-theme-huxblog/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/hexo-theme-huxblog/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://kaijun.rocks/hexo-theme-huxblog/hexo-theme-huxblog/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-49627206-1';
+    var _gaDomain = 'huangxuan.me';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '4cc1f2d8f3067386cc5cdb626a202900';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://kaijun.rocks/hexo-theme-huxblog/hexo-theme-huxblog/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

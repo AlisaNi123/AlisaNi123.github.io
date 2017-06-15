@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/hexo-theme-huxblog/img/favicon.ico">
+
+    <title>
+        
+          Eclipse常用快捷键 - Alisa的博客 | Alisa&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://kaijun.rocks/hexo-theme-huxblog/hexo-theme-huxblog/2015/06/23/Eclipse常用命令/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/hexo-theme-huxblog/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/hexo-theme-huxblog/css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/hexo-theme-huxblog/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/hexo-theme-huxblog/">Alisa&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/hexo-theme-huxblog/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/hexo-theme-huxblog/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/hexo-theme-huxblog/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/hexo-theme-huxblog/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://kaijun.rocks/hexo-theme-huxblog/hexo-theme-huxblog/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('post-bg-2015.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/hexo-theme-huxblog/tags/#常用工具" title="常用工具">常用工具</a>
+                        
+                    </div>
+                    <h1>Eclipse常用快捷键</h1>
+                    <h2 class="subheading"> &quot;Hello World, Hello Blog&quot;</h2>
+                    <span class="meta">
+                        Posted by alisa on
+                        2015-06-23
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>1 几个最重要的快捷键</p>
+<p>代码助手:Ctrl+Space（简体中文操作系统是Alt+/）</p>
+<p>快速修正：Ctrl+1</p>
+<p>单词补全：Alt+/</p>
+<p>打开外部Java文档：Shift+F2</p>
+<p>显示搜索对话框：Ctrl+H</p>
+<p>快速Outline：Ctrl+O</p>
+<p>打开资源：Ctrl+Shift+R</p>
+<p>打开类型：Ctrl+Shift+T</p>
+<p>显示重构菜单：Alt+Shift+T</p>
+<p>上一个/下一个光标的位置：Alt+Left/Right</p>
+<p>上一个/下一个成员（成员对象或成员函数）：Ctrl+Shift+Up/Down</p>
+<p>选中闭合元素：Alt+Shift+Up/Down/Left/Right</p>
+<p>删除行：Ctrl+D</p>
+<p>在当前行上插入一行：Ctrl+Shift+Enter</p>
+<p>在当前行下插入一行： Shift+Enter</p>
+<p>上下移动选中的行：Alt+Up/Down</p>
+<p>组织导入：Ctrl+Shift+O</p>
+<p>2 定位</p>
+<p>2.1 行内定位</p>
+<p>行末/行首：End/Home</p>
+<p>前一个/后一个单词：Ctrl+Right/Left</p>
+<p>2.2 文件内定位</p>
+<p>跳到某行：Ctrl+L</p>
+<p>上下滚屏：Ctrl+Up/Down</p>
+<p>上一个/下一个成员（成员对象或成员函数）：Ctrl+Shift+Up/Down</p>
+<p>快速Outline：Ctrl+O</p>
+<p>2.3 跨文件定位</p>
+<p>打开声明：F3</p>
+<p>打开资源：Ctrl+Shift+R</p>
+<p>打开类型：Ctrl+Shift+T</p>
+<p>在workspace中搜索选中元素的声明：Ctrl+G</p>
+<p>在workspace中搜索选中的文本：Ctrl+Alt+G</p>
+<p>在workspace中搜索选中元素的引用：Ctrl+Shift+G</p>
+<p>打开调用层次结构：Ctrl+Alt+H</p>
+<p>快速层次结构：Ctrl+T</p>
+<p>反悔：Ctrl+Z</p>
+<p>2.4 其它</p>
+<p>上一个/下一个光标所在位置：Alt+Left/Right</p>
+<p>上一个编辑的位置：Ctrl+Q</p>
+<p>3 选中</p>
+<p>3.1 行内选中</p>
+<p>选中到行末/行首：Shift+End/Home</p>
+<p>选中上一个/下一个单词：Ctrl+Shift+Left/Right</p>
+<p>3.2 文件内选中</p>
+<p>选中闭合元素：Alt+Shift+Up</p>
+<p>恢复到上一个选中：Alt+Shift+Down</p>
+<p>选中下一个/上一个元素：Alt+Shift+Right/Left</p>
+<p>4 定位/选中/操作同时</p>
+<p>删除行：Ctrl+D</p>
+<p>删除下一个/上一个单词：Ctrl+Delete/Backspace</p>
+<p>删除到行末：Ctrl+Shift+Delete</p>
+<p>在当前行上插入一行：Ctrl+Shift+Enter </p>
+<p>在当前行下插入一行： Shift+Enter</p>
+<p>上下移动选中的行：Alt+Up/Down</p>
+<p>拷贝选中的行：Ctrl+Alt+Up/Down</p>
+<p>5 其它的代码编辑类快捷键</p>
+<p>保存：Ctrl+S</p>
+<p>保存所有：Ctrl+Shift+S</p>
+<p>下一个命中的项（搜索之后）：Ctrl+.</p>
+<p>注释：Ctrl+/</p>
+<p>添加导入：Ctrl+Shift+M</p>
+<p>显示快捷键帮助：Ctrl+Shift+L</p>
+<p>变为大/小写：Ctrl+Shift+X/Y</p>
+<p>6 重构</p>
+<p>显示重构菜单：Alt+Shift+T</p>
+<p>重构-改变方法签名：Alt+Shift+C</p>
+<p>重构-移动：Alt+Shift+V</p>
+<p>重构-重命名：Alt+Shift+R</p>
+<p>7 编辑器、视图、透视图切换</p>
+<p>下一个编辑器：Ctrl+F6</p>
+<p>下一个视图：Ctrl+F7</p>
+<p>下一个透视图：Ctrl+F8</p>
+<p>最大化当前视图或编辑器：Ctrl+M</p>
+<p>激活编辑器：F12</p>
+<p>8 Debug</p>
+<p>F5：Step Into（debug）</p>
+<p>F6：Step over（debug）</p>
+<p>F7：Step return（debug）</p>
+<p>F8：Resume（debug）</p>
+<p>F11：debug上一个应用（debug）</p>
+<p>9 Up/Down/Right/Left类快捷键</p>
+<p>Ctrl</p>
+<p>前一个/后一个单词：Ctrl+Right/Left</p>
+<p>上下滚屏：Ctrl+Up/Down</p>
+<p>Alt</p>
+<p>上一个/下一个光标的位置：Alt+Left/Right</p>
+<p>上下移动选中的行：Alt+Up/Down</p>
+<p>Shift</p>
+<p>选中上一个/下一个字符：Shift+Left/Right</p>
+<p>选中上一行/下一行（从当前光标位置开始）：Shift+Up/Down</p>
+<p>Ctrl+Shift</p>
+<p>上一个/下一个成员（成员对象或成员函数）：Ctrl+Shift+Up/Down</p>
+<p>选中上一个/下一个单词：Ctrl+Shift+Left/Right</p>
+<p>Alt+Shift</p>
+<p>选中闭合元素：Alt+Shift+Up</p>
+<p>恢复到上一个选中：Alt+Shift+Down</p>
+<p>选中下一个/上一个元素：Alt+Shift+Right/Left</p>
+<p>拷贝选中的行：Ctrl+Alt+Up/Down</p>
+<p>Ctrl+Alt</p>
+<p>拷贝选中的行：Ctrl+Alt+Up/Down</p>
+<p>10 F类快捷键</p>
+<p>F2：显示提示/重命名</p>
+<p>F3：打开选中元素的声明</p>
+<p>F4：打开选中元素的类型继承结构</p>
+<p>F5：刷新</p>
+<p>F5：Step Into（debug）</p>
+<p>F6：Step over（debug）</p>
+<p>F7：Step return（debug）</p>
+<p>F8：Resume（debug）</p>
+<p>F11：debug上一个应用（debug）</p>
+<p>F12：激活编辑器</p>
+<p>补充：<br>Ctrl+1 快速修复(最经典的快捷键,就不用多说了)</p>
+<p>Ctrl+D: 删除当前行</p>
+<p>Ctrl+Alt+↓ 复制当前行到下一行(复制增加)</p>
+<p>Ctrl+Alt+↑ 复制当前行到上一行(复制增加)</p>
+<p>Alt+↓ 当前行和下面一行交互位置(特别实用,可以省去先剪切,再粘贴了)</p>
+<p>Alt+↑ 当前行和上面一行交互位置(同上)</p>
+<p>Alt+← 前一个编辑的页面</p>
+<p>Alt+→ 下一个编辑的页面(当然是针对上面那条来说了)</p>
+<p>Alt+Enter 显示当前选择资源(工程,or 文件 or文件)的属性</p>
+<p>Shift+Enter 在当前行的下一行插入空行(这时鼠标可以在当前行的任一位置,不一定是最后)</p>
+<p>Shift+Ctrl+Enter 在当前行插入空行(原理同上条)</p>
+<p>Ctrl+Q 定位到最后编辑的地方</p>
+<p>Ctrl+L 定位在某行 (对于程序超过100的人就有福音了)</p>
+<p>Ctrl+M 最大化当前的Edit或View (再按则反之)</p>
+<p>Ctrl+/ 注释当前行,再按则取消注释</p>
+<p>Ctrl+O 快速显示 OutLine</p>
+<p>Ctrl+T 快速显示当前类的继承结构</p>
+<p>Ctrl+W 关闭当前Editer</p>
+<p>Ctrl+K 参照选中的Word快速定位到下一个</p>
+<p>Ctrl+E 快速显示当前Editer的下拉列表(如果当前页面没有显示的用黑体表示)</p>
+<p>Ctrl+/(小键盘) 折叠当前类中的所有代码</p>
+<p>Ctrl+×(小键盘) 展开当前类中的所有代码</p>
+<p>Ctrl+Space 代码助手完成一些代码的插入(但一般和输入法有冲突,可以修改输入法的热键,也可以暂用Alt+/来代替)</p>
+<p>Ctrl+Shift+E 显示管理当前打开的所有的View的管理器(可以选择关闭,激活等操作)</p>
+<p>Ctrl+J 正向增量查找(按下Ctrl+J后,你所输入的每个字母编辑器都提供快速匹配定位到某个单词,如果没有,则在stutes line中显示没有找到了,查一个单词时,特别实用,这个功能Idea两年前就有了)</p>
+<p>Ctrl+Shift+J 反向增量查找(和上条相同,只不过是从后往前查)</p>
+<p>Ctrl+Shift+F4 关闭所有打开的Editer</p>
+<p>Ctrl+Shift+X 把当前选中的文本全部变味小写</p>
+<p>Ctrl+Shift+Y 把当前选中的文本全部变为小写</p>
+<p>Ctrl+Shift+F 格式化当前代码</p>
+<p>Ctrl+Shift+P 定位到对于的匹配符(譬如{}) (从前面定位后面时,光标要在匹配符里面,后面到前面,则反之)</p>
+<p>下面的快捷键是重构里面常用的,本人就自己喜欢且常用的整理一下(注:一般重构的快捷键都是Alt+Shift开头的了)</p>
+<p>Alt+Shift+R 重命名 (是我自己最爱用的一个了,尤其是变量和类的Rename,比手工方法能节省很多劳动力)</p>
+<p>Alt+Shift+M 抽取方法 (这是重构里面最常用的方法之一了,尤其是对一大堆泥团代码有用)</p>
+<p>Alt+Shift+C 修改函数结构(比较实用,有N个函数调用了这个方法,修改一次搞定)</p>
+<p>Alt+Shift+L 抽取本地变量( 可以直接把一些魔法数字和字符串抽取成一个变量,尤其是多处调用的时候)</p>
+<p>Alt+Shift+F 把Class中的local变量变为field变量 (比较实用的功能)</p>
+<p>Alt+Shift+I 合并变量(可能这样说有点不妥Inline)</p>
+<p>Alt+Shift+V 移动函数和变量(不怎么常用)</p>
+<p>Alt+Shift+Z 重构的后悔药(Undo)</p>
+<p>编辑</p>
+<p>作用域 功能 快捷键</p>
+<p>全局 查找并替换 Ctrl+F</p>
+<p>文本编辑器 查找上一个 Ctrl+Shift+K</p>
+<p>文本编辑器 查找下一个 Ctrl+K</p>
+<p>全局 撤销 Ctrl+Z</p>
+<p>全局 复制 Ctrl+C</p>
+<p>全局 恢复上一个选择 Alt+Shift+↓</p>
+<p>全局 剪切 Ctrl+X</p>
+<p>全局 快速修正 Ctrl1+1</p>
+<p>全局 内容辅助 Alt+/</p>
+<p>全局 全部选中 Ctrl+A</p>
+<p>全局 删除 Delete</p>
+<p>全局 上下文信息 Alt+？</p>
+<p>Alt+Shift+?</p>
+<p>Ctrl+Shift+Space</p>
+<p>Java编辑器 显示工具提示描述 F2</p>
+<p>Java编辑器 选择封装元素 Alt+Shift+↑</p>
+<p>Java编辑器 选择上一个元素 Alt+Shift+←</p>
+<p>Java编辑器 选择下一个元素 Alt+Shift+→</p>
+<p>文本编辑器 增量查找 Ctrl+J</p>
+<p>文本编辑器 增量逆向查找 Ctrl+Shift+J</p>
+<p>全局 粘贴 Ctrl+V</p>
+<p>全局 重做 Ctrl+Y</p>
+<p>查看</p>
+<p>作用域 功能 快捷键</p>
+<p>全局 放大 Ctrl+=</p>
+<p>全局 缩小 Ctrl+-</p>
+<p>窗口</p>
+<p>作用域 功能 快捷键</p>
+<p>全局 激活编辑器 F12</p>
+<p>全局 切换编辑器 Ctrl+Shift+W</p>
+<p>全局 上一个编辑器 Ctrl+Shift+F6</p>
+<p>全局 上一个视图 Ctrl+Shift+F7</p>
+<p>全局 上一个透视图 Ctrl+Shift+F8</p>
+<p>全局 下一个编辑器 Ctrl+F6</p>
+<p>全局 下一个视图 Ctrl+F7</p>
+<p>全局 下一个透视图 Ctrl+F8</p>
+<p>文本编辑器 显示标尺上下文菜单 Ctrl+W</p>
+<p>全局 显示视图菜单 Ctrl+F10</p>
+<p>全局 显示系统菜单 Alt+-</p>
+<p>导航</p>
+<p>作用域 功能 快捷键</p>
+<p>Java编辑器 打开结构 Ctrl+F3</p>
+<p>全局 打开类型 Ctrl+Shift+T</p>
+<p>全局 打开类型层次结构 F4</p>
+<p>全局 打开声明 F3</p>
+<p>全局 打开外部javadoc Shift+F2</p>
+<p>全局 打开资源 Ctrl+Shift+R</p>
+<p>全局 后退历史记录 Alt+←</p>
+<p>全局 前进历史记录 Alt+→</p>
+<p>全局 上一个 Ctrl+,</p>
+<p>全局 下一个 Ctrl+.</p>
+<p>Java编辑器 显示大纲 Ctrl+O</p>
+<p>全局 在层次结构中打开类型 Ctrl+Shift+H</p>
+<p>全局 转至匹配的括号 Ctrl+Shift+P</p>
+<p>全局 转至上一个编辑位置 Ctrl+Q</p>
+<p>Java编辑器 转至上一个成员 Ctrl+Shift+↑</p>
+<p>Java编辑器 转至下一个成员 Ctrl+Shift+↓</p>
+<p>文本编辑器 转至行 Ctrl+L</p>
+<p>搜索</p>
+<p>作用域 功能 快捷键</p>
+<p>全局 出现在文件中 Ctrl+Shift+U</p>
+<p>全局 打开搜索对话框 Ctrl+H</p>
+<p>全局 工作区中的声明 Ctrl+G</p>
+<p>全局 工作区中的引用 Ctrl+Shift+G</p>
+<p>文本编辑</p>
+<p>作用域 功能 快捷键</p>
+<p>文本编辑器 改写切换 Insert</p>
+<p>文本编辑器 上滚行 Ctrl+↑</p>
+<p>文本编辑器 下滚行 Ctrl+↓</p>
+<p>文件</p>
+<p>作用域 功能 快捷键</p>
+<p>全局 保存 Ctrl+S</p>
+<p>全局 打印 Ctrl+P</p>
+<p>全局 关闭 Ctrl+F4</p>
+<p>全局 全部保存 Ctrl+Shift+S</p>
+<p>全局 全部关闭 Ctrl+Shift+F4</p>
+<p>全局 属性 Alt+Enter</p>
+<p>全局 新建 Ctrl+N</p>
+<p>项目</p>
+<p>作用域 功能 快捷键</p>
+<p>全局 全部构建 Ctrl+B</p>
+<p>源代码</p>
+<p>作用域 功能 快捷键</p>
+<p>Java编辑器 格式化 Ctrl+Shift+F</p>
+<p>Java编辑器 取消注释 Ctrl+\</p>
+<p>Java编辑器 注释 Ctrl+/</p>
+<p>Java编辑器 添加导入 Ctrl+Shift+M</p>
+<p>Java编辑器 组织导入 Ctrl+Shift+O</p>
+<p>Java编辑器 使用try/catch块来包围 未设置，太常用了，所以在这里列出,建议自己设置。</p>
+<p>也可以使用Ctrl+1自动修正。</p>
+<p>运行</p>
+<p>作用域 功能 快捷键</p>
+<p>全局 单步返回 F7</p>
+<p>全局 单步跳过 F6</p>
+<p>全局 单步跳入 F5</p>
+<p>全局 单步跳入选择 Ctrl+F5</p>
+<p>全局 调试上次启动 F11</p>
+<p>全局 继续 F8</p>
+<p>全局 使用过滤器单步执行 Shift+F5</p>
+<p>全局 添加/去除断点 Ctrl+Shift+B</p>
+<p>全局 显示 Ctrl+D</p>
+<p>全局 运行上次启动 Ctrl+F11</p>
+<p>全局 运行至行 Ctrl+R</p>
+<p>全局 执行 Ctrl+U</p>
+<p>重构</p>
+<p>作用域 功能 快捷键</p>
+<p>全局 撤销重构 Alt+Shift+Z</p>
+<p>全局 抽取方法 Alt+Shift+M</p>
+<p>全局 抽取局部变量 Alt+Shift+L</p>
+<p>全局 内联 Alt+Shift+I</p>
+<p>全局 移动 Alt+Shift+V</p>
+<p>全局 重命名 Alt+Shift+R</p>
+<p>全局 重做 Alt+Shift+Y</p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/hexo-theme-huxblog/2015/07/06/adb端口被占用/" data-toggle="tooltip" data-placement="top" title="adb端口被占用">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/hexo-theme-huxblog/2015/05/29/常用adb命令/" data-toggle="tooltip" data-placement="top" title="常用的adb命令">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/hexo-theme-huxblog/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/hexo-theme-huxblog/tags/#常用工具" title="常用工具">常用工具</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="" target="_blank">Alisa&#39;s Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">Foo</a></li>
+                    
+                        <li><a href="#" target="_blank">Bar</a></li>
+                    
+                        <li><a href="#" target="_blank">Example Friends</a></li>
+                    
+                        <li><a href="#" target="_blank">It helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "hexo-theme-huxblog";
+    var disqus_identifier = "http://kaijun.rocks/hexo-theme-huxblog/2015/06/23/Eclipse常用命令/";
+    var disqus_url = "http://kaijun.rocks/hexo-theme-huxblog/2015/06/23/Eclipse常用命令/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/none">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/none">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/none">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/none">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/alisa66666">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/none">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Alisa&#39;s Blog 2017 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/hexo-theme-huxblog/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/hexo-theme-huxblog/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/hexo-theme-huxblog/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://kaijun.rocks/hexo-theme-huxblog/hexo-theme-huxblog/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-49627206-1';
+    var _gaDomain = 'huangxuan.me';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '4cc1f2d8f3067386cc5cdb626a202900';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://kaijun.rocks/hexo-theme-huxblog/hexo-theme-huxblog/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
