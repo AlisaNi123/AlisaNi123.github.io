@@ -97,14 +97,14 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archives/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archives/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -191,7 +191,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>##Appium简介<br>Appium是由Sauce Labs提供的一款开源自动化框架，它使用WebDriver协议来驱动iOS和Androind应用。</p>
+                <p>#Appium简介<br>Appium是由Sauce Labs提供的一款开源自动化框架，它使用WebDriver协议来驱动iOS和Androind应用。</p>
 <ul>
 <li><p>1 ，appium是开源的移动端自动化测试框架；</p>
 </li>
@@ -202,7 +202,7 @@
 <li><p>4，appium是跨平台的，可以用在osx，windows以及linux桌面系统上；</p>
 </li>
 </ul>
-<p>##Appium理念：</p>
+<p>#Appium理念：</p>
 <ul>
 <li><p>1，不需要为了自动化而且重新编译或修改测试app；</p>
 </li>
@@ -210,7 +210,7 @@
 </li>
 <li><p>3，不要为了移动端的自动化测试而重新发明轮子，重新写一套惊天动地的api；也就是说webdriver协议里的api已经够好了，拿来改进一下就可以了；</p>
 </li>
-<li><p>4，移动端自动化测试应该是开源的；<br>##Appium设计</p>
+<li><p>4，移动端自动化测试应该是开源的；<br>#Appium设计</p>
 </li>
 </ul>
 <p>Appium使用的平台厂商提供的自动化框架包括以下几点：</p>
@@ -218,7 +218,7 @@
 <p>Androind4.2+：Google的UiAutomator</p>
 <p>Androind2.3+：Instrumentation</p>
 <p>WebDriver规范了一个客户端/服务器协议（被称为JSON WireProtocol）。基于该客户端/服务器架构，用任何语言编写的客户端都可以发送到相应的HTTP请求到服务器。Appium&amp;WebDriver客户端不是技术上测试框架——它们是自动化测试库。</p>
-<p>##Appium概念<br> C/S 架构</p>
+<p>#Appium概念<br> C/S 架构</p>
 <p>  Appium 的核心是一个 web 服务器，它提供了一套 REST 的接口。它收到客户端的连接，监听到命令，接着在移动设备上执行这些命令，然后将执行结果放在 HTTP响应中返还给客户端。事实上，这种客户端/服务端的 架构给予了许多的可能性：比如我们可以使用任何实现了该客户端的语言来写我们的测试代码。比如我们可以把服务端放在不同 的机器上。比如我们可以只写测试代码，然后使用像 Sauce Labs 这样的云服务来解释命令。</p>
 <p>Session</p>
 <p>  自动化始终围绕一个session进行，客户端初始化一个seesion（会话）来与服务端交互，不同的语言有不同的实现方式，但是他们最终都是发送为一个POST请求给服务端，请求中包含一个JSON对象，被称作“desired capabilities”。此时，服务端就会开启一个自动化的 session，然后返回一个 session ID，session ID将会被用户发送后续的命令。</p>
@@ -230,12 +230,10 @@
 <p>  Appium 服务端有很多语言库 Java, Ruby, Python, PHP, javascript 和 C#，这些库都实现了 Appium 对 WebDriver 协议的扩展。当使用 Appium 的时候，你只需使用这些库代替常规的 WebDriver 库就可以了。 你可以从这里看到所有的库的列表。</p>
 <p>Appium.app, Appium.exe</p>
 <p>  我们提供了 GUI 封装的 Appium 服务端下载，它封装了运行 Appium服务端的所有依赖，而不需要担心怎样安装node.js。其中还包括一个Inspector工具，可以帮助你检查应用的界面层级，这样写测试用例时更方便</p>
-<p>##Appium原理架构</p>
-<p>###Appium Androind原理架构</p>
-<p>####1、架构图<br><img src="http://s3.sinaimg.cn/mw690/001LScvzgy6MPNMdiRs72&amp;690?_=6060019" alt=""><br>简易图<br><img src="http://s12.sinaimg.cn/mw690/001LScvzgy6MPNQJ3vl1b&amp;690?_=6060019" alt=""></p>
+<p>#Appium原理架构<br>Appium Androind原理架构<br>1、架构图<br><img src="http://s3.sinaimg.cn/mw690/001LScvzgy6MPNMdiRs72&amp;690?_=6060019" alt=""><br>简易图<br><img src="http://s12.sinaimg.cn/mw690/001LScvzgy6MPNQJ3vl1b&amp;690?_=6060019" alt=""></p>
 <p>在Android端，appium基于WebDriver，并利用Bootstrap.js，最后通过调⽤用UiAutomator的命令，实现App的自动化测试。</p>
 <p>UiAutomator测试框架是Android SDK自带的App UI自动化测<br>试Java库。另外由于UiAutomator对H5的支持有限，appium引入了chromedriver来实现基于H5的自动化。</p>
-<p>####2、主要原理：</p>
+<p>2、主要原理：</p>
 <ul>
 <li>1.左边的WebDriver script是我们的selenium测试脚本</li>
 <li>2.中间是起的Appium的服务，Appium在这边起了一个Server（4723端口），跟selenium<br>Webdriver测试框架类似，Appium⽀支持标准的WebDriver JSONWireProtocol 。在这里提供<br>了一套web服务，Appium Server接收web driver 标准请求，解析请求内容，调⽤用对应的框<br>架响应操作。<br>如：脚本发送一个点击按钮的请求给appium server，</li>
@@ -245,11 +243,11 @@
 </li>
 <li>4.最后执⾏行的结果由Bootstrap返回给appium server</li>
 <li>5.另外，appium还用到了chromedriver来支持基于H5（webview）的测试。</li>
-<li>###Appium iOS原理架构<br>####1、架构图<br><img src="http://s7.sinaimg.cn/mw690/001LScvzgy6MPPeB7rod6&amp;690?_=6060019" alt=""></li>
+<li>Appium iOS原理架构<br>1、架构图<br><img src="http://s7.sinaimg.cn/mw690/001LScvzgy6MPPeB7rod6&amp;690?_=6060019" alt=""></li>
 </ul>
 <p>简易图<br><img src="http://s8.sinaimg.cn/mw690/001LScvzgy6MPPfFylxc7&amp;690?_=6060019" alt=""></p>
 <p>在IOS端，appium同样使用WebDriver的一套协议。与Android端测试框架不同的是，appium ios封装了apple的 Instruments框架，主要用了Instrument里的UI Automation（Apple的自动化测试框架），然后在设备中注入bootstrap.js进行监听。</p>
-<p>####2.主要原理</p>
+<p>2.主要原理</p>
 <ul>
 <li>1.左边的WebDriver script是selenium测试脚本</li>
 <li>2.中间是起的Appium的服务，Appium在这边起了一个Server（4723端口），跟seleniumWebdriver测试框架类似，Appium支持标准的WebDriver JSONWireProtocol 。在这里提供<br>了一套web服务，Appium Server接收web driver 标准请求，解析请求内容，调⽤用对应的框<br>架响应操作。<br>如：脚本发送一个点击按钮的请求给appium server，</li>
@@ -405,7 +403,7 @@
                 
                 
                     <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/蓦然">
+                        <a target="_blank" href="https://www.zhihu.com/people/Alisa">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa  fa-stack-1x fa-inverse">知</i>
