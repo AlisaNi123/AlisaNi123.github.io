@@ -13,11 +13,11 @@
 
     <title>
         
-          adb端口被占用 - Alisa的博客 | Alisa&#39;s Blog
+          安装Appium - Alisa的博客 | Alisa&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/2015/07/06/adb端口被占用/">
+    <link rel="canonical" href="http://yoursite.com/2016/07/06/appium(安装)/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -155,7 +155,7 @@
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('post-bg-2015.jpg')
+        background-image: url('appium-bg-o.jpg')
     }
 </style>
 <header class="intro-header" >
@@ -165,14 +165,14 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                          <a class="tag" href="/tags/#常用工具" title="常用工具">常用工具</a>
+                          <a class="tag" href="/tags/#appium" title="appium">appium</a>
                         
                     </div>
-                    <h1>adb端口被占用</h1>
-                    <h2 class="subheading"> &quot;默认端口被占用解决的方法&quot;</h2>
+                    <h1>安装Appium</h1>
+                    <h2 class="subheading"> &quot;手把手教你安装使用appium&quot;</h2>
                     <span class="meta">
                         Posted by alisa on
-                        2015-07-06
+                        2016-07-06
                     </span>
                 </div>
             </div>
@@ -191,10 +191,71 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p><img src="http://upload-images.jianshu.io/upload_images/4047685-3d11712113ac0986.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="端口被占用.png"></p>
-<p>#方式一<br>5037为adb默认端口，若5037端口被占用，查看占用端口的进程<br>PIDC:\Users\wwx229495&gt;netstat -aon|findstr 5037<br>TCP    127.0.0.1:5037         0.0.0.0:0              LISTENING       8292<br>通过PID查看所有进程C:\Users\qq&gt;tasklist /fi “PID eq 8292”映像名称<br>PID 会话名 会话#  内存使用========================= ======== ================ =========== ============svchost.exe 3676 Services                   0     13,800 K<br>杀死占用端口的进程C:\Users\qq&gt;taskkill /pid 8292 /f<br>成功: 已终止 PID 为 8292 的进程。</p>
-<p>#方式二<br>自己配置 adb server 端口，使用一个生僻的值。<br>很简单，只要在系统环境变量中定义 ANDROID_ADB_SERVER_PORT 的值即可。<br>最好选择一个5位数的端口号（10000 ~ 65535），不易重复。<br>win下只要在环境变量中增加一个ANDROID_ADB_SERVER_PORT ，值填你自己定义的端口。<br><a href="http://lib.csdn.net/base/linux" target="_blank" rel="external">Linux</a>下只要 export $ANDROID_ADB_SERVER_PORT = 自定义端口，即可。</p>
-<p>最后的最后我反正是重启电脑才好的<br>ps：也有可能是你的酷狗播放器/  360/金山软件（sjk-daemon.exe占用） 占用5037端口，卸了重启就OK了</p>
+                <p>关于Appium相信想了解自动化的童鞋多少已经了解过了，但安装起来比较麻烦，网上各路大神也出了许多安装的教程，在但安装的过程中会出现各种的问题，今天就详细的分享一下我的安装过程:</p>
+<p>#（一）首先需要下载安装Appium和node.js</p>
+<p>##1、Appium官方网站：<a href="http://appium.io/" target="_blank" rel="external">http://appium.io/</a><br>如果未安装该组件，请执行下列操作之一: </p>
+<p>1）安装 Microsoft Windows SDK for Windows Server 2008 和 .NET Framework 3.5；</p>
+<p>2) 安装 Microsoft Visual Studio 2008。</p>
+<p>这是因为Appium是由.NET 开发的，所以，它会依赖 .NET framework相关组件。你当然可以按照提示下载安装1）或2）从而再次尝试安装Appium 。</p>
+<p>但其实，我们可以在Appium官方网站上下载操作系统相应的Appium版本。<br>下载桌面客户端<br><img src="http://images0.cnblogs.com/blog2015/311516/201505/301740148445973.png" alt=""></p>
+<p>然后解压缩，双击“appium-installer.exe”进行安装。根据提示，一步一步进行安装。最终在会桌面上生成Appium图标。</p>
+<p>双击桌面图标时，可能会出现的情况<br><img src="http://images0.cnblogs.com/blog2015/311516/201505/301742539853391.png" alt=""></p>
+<p>可以百度“.net framework 4.5” ，百度软件中心提供该框架的下载，将其下载并安装即可<br><img src="http://images0.cnblogs.com/blog2015/311516/201505/301743216577411.png" alt=""></p>
+<p>好了，启动再次appium<br><img src="http://images0.cnblogs.com/blog2015/311516/201505/301745046105131.png" alt=""></p>
+<p>##2、node.js官方网站：<a href="https://nodejs.org/" target="_blank" rel="external">https://nodejs.org/</a></p>
+<p><img src="http://images0.cnblogs.com/blog2015/311516/201505/301736287199790.png" alt=""></p>
+<p>看你的操作系统时多少位的，不要下错哦，下载完成后，点击下载文件进行安装，一切按照默认流程来就好了。</p>
+<p><img src="http://images0.cnblogs.com/blog2015/311516/201505/301736598763643.png" alt=""></p>
+<p>安装完成后打开Windows 命令提示符，输入“npm”</p>
+<p><img src="http://images0.cnblogs.com/blog2015/311516/201505/301737407668201.png" alt=""></p>
+<p>如此便可以开开心心做下一步了#_#</p>
+<p>#（二）搭建环境</p>
+<p>##1.安装JAVA环境<br>java下载地址：<a href="http://www.java.com/zh_CN/download/manual.jsp" target="_blank" rel="external">http://www.java.com/zh_CN/download/manual.jsp</a></p>
+<p>（1）打开下载链接选择相应的版本进行下载。我们以Windows安装JDK为例，<br><img src="http://images0.cnblogs.com/blog2015/311516/201506/041717351446051.png" alt=""></p>
+<p>（2）双击下载的JDK ，设置安装路径。这里我们选择默认安装在</p>
+<p>D:\Program Files (x86)\Java\jdk1.8.0_25目录下。 </p>
+<p>（3）下面设置环境变量：</p>
+<p>“我的电脑”右键菜单—&gt;属性—&gt;高级—&gt;环境变量—&gt;系统变量–&gt;新建..</p>
+<p>变量名：JAVA_HOME </p>
+<p>变量值：D:\Program Files (x86)\Java\jdk1.8.0_25 </p>
+<p>变量名：CALSS_PATH</p>
+<p>变量值：.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar; </p>
+<p>找到path变量名—&gt;“编辑”添加：</p>
+<p>变量名：PATH</p>
+<p>变量值：%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;</p>
+<p>在Windows命令提示符下验证java是否成功：</p>
+<p>1）、”开始”-&gt;”运行”，键入”cmd”；</p>
+<p>2）、键入命令: java -version、java、javac 几个命令，出现以下信息，说明环境变量配置成功；</p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2013/12/java-win9.png" alt=""></p>
+<p>#（三）然后安装android adt 或者 SDK </p>
+<p>##1、下载<br>Android SDK：</p>
+<p>Android SDK提供了你的API库和开发工具构建，测试和调试应用程序，Android。简单来讲，Android SDK 可以看做用于开发和运行Android应用的一个软件。</p>
+<p>通过官方地址下载：<a href="http://developer.android.com/sdk/index.html" target="_blank" rel="external">http://developer.android.com/sdk/index.html</a></p>
+<p>当然，我不能保证你可以访问到这个地址，原因你懂的！</p>
+<p>adt和sdk 都可以用来运行android 模拟器，所以下载哪个都可以。下载链接中已经标识了系统信息，请根据自己的操作系统下载相应的版本，Adt 和sdk 解压包对比，相对adt的内容要多一些，如果你不做android开发的话，两者都可以。</p>
+<p>这里提供adt-bundle 下载链接：</p>
+<p><a href="http://dl.google.com/android/adt/adt-bundle-windows-x86-20140702.zip" target="_blank" rel="external">http://dl.google.com/android/adt/adt-bundle-windows-x86-20140702.zip</a></p>
+<p><a href="https://dl.google.com/android/adt/adt-bundle-windows-x86_64-20140702.zip" target="_blank" rel="external">https://dl.google.com/android/adt/adt-bundle-windows-x86_64-20140702.zip</a></p>
+<p><a href="http://dl.google.com/android/adt/adt-bundle-mac-x86_64-20140702.zip" target="_blank" rel="external">http://dl.google.com/android/adt/adt-bundle-mac-x86_64-20140702.zip</a></p>
+<p><a href="http://dl.google.com/android/adt/adt-bundle-linux-x86-20140702.zip" target="_blank" rel="external">http://dl.google.com/android/adt/adt-bundle-linux-x86-20140702.zip</a></p>
+<p><a href="http://dl.google.com/android/adt/adt-bundle-linux-x86_64-20140702.zip" target="_blank" rel="external">http://dl.google.com/android/adt/adt-bundle-linux-x86_64-20140702.zip</a></p>
+<p>Android-sdk下载地址：</p>
+<p><a href="http://dl.google.com/android/android-sdk_r23.0.2-windows.zip" target="_blank" rel="external">http://dl.google.com/android/android-sdk_r23.0.2-windows.zip</a></p>
+<p><a href="http://dl.google.com/android/installer_r23.0.2-windows.exe" target="_blank" rel="external">http://dl.google.com/android/installer_r23.0.2-windows.exe</a></p>
+<p><a href="http://dl.google.com/android/android-sdk_r23.0.2-macosx.zip" target="_blank" rel="external">http://dl.google.com/android/android-sdk_r23.0.2-macosx.zip</a></p>
+<p><a href="http://dl.google.com/android/android-sdk_r23.0.2-linux.tgz" target="_blank" rel="external">http://dl.google.com/android/android-sdk_r23.0.2-linux.tgz</a></p>
+<p><img src="http://images0.cnblogs.com/blog2015/311516/201506/041721234571635.png" alt=""> </p>
+<p>##2、环境搭建</p>
+<p>下面设置Android环境变量，方法与java环境变量类似。我本机的目录结果为：</p>
+<p>D:\android\android-sdk-windows</p>
+<p>下面设置环境变量：</p>
+<p>“我的电脑”右键菜单—&gt;属性—&gt;高级—&gt;环境变量—&gt;系统变量–&gt;新建..</p>
+<p>变量名：ANDROID_HOME </p>
+<p>变量值：D:\android\android-sdk-windows</p>
+<p>找到path变量名—&gt;“编辑”添加：</p>
+<p>变量名：PATH</p>
+<p>变量值：;%ANDROID_HOME%\platform-tools;%ANDROID_HOME%\tools;</p>
+<p>安装完成可以开始写你的自动化测试用例。</p>
 
 
                 <hr>
@@ -204,12 +265,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2015/12/21/js-mesview/" data-toggle="tooltip" data-placement="top" title="js消息对话框">&larr; Previous Post</a>
+                            <a href="/2016/10/29/MQTT/" data-toggle="tooltip" data-placement="top" title="MQTT简介">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/2015/06/23/Eclipse常用命令/" data-toggle="tooltip" data-placement="top" title="Eclipse常用快捷键">Next Post &rarr;</a>
+                            <a href="/2016/06/15/appium（简介）/" data-toggle="tooltip" data-placement="top" title="简说Appium">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -242,7 +303,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#常用工具" title="常用工具">常用工具</a>
+                          <a class="tag" href="/tags/#appium" title="appium">appium</a>
                         
                     </div>
                 </section>
@@ -280,8 +341,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "hexo-theme-huxblog";
-    var disqus_identifier = "http://yoursite.com/2015/07/06/adb端口被占用/";
-    var disqus_url = "http://yoursite.com/2015/07/06/adb端口被占用/";
+    var disqus_identifier = "http://yoursite.com/2016/07/06/appium(安装)/";
+    var disqus_url = "http://yoursite.com/2016/07/06/appium(安装)/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
