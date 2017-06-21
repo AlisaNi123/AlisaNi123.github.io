@@ -13,11 +13,11 @@
 
     <title>
         
-          Alisa的博客 | Alisa&#39;s Blog
+          selenium - Alisa的博客 | Alisa&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/i_dont_wanna_use_default_archives/2015/05/">
+    <link rel="canonical" href="http://yoursite.com/2016/07/24/seleniumIDE/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -147,7 +147,202 @@
 
 
     <!-- Main Content -->
-    <!-- Default Archive layout, we use archives instead. -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('post-bg-2015.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#selenium" title="selenium">selenium</a>
+                        
+                    </div>
+                    <h1>selenium</h1>
+                    <h2 class="subheading"> &quot;seleniumIDE在firefox上安装使用&quot;</h2>
+                    <span class="meta">
+                        Posted by alisa on
+                        2016-07-24
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>1、什么是selenium？</p>
+<p>Selenium是一个浏览器自动化操作框架。Selenium主要由三种工具组成。第一个工具SeleniumIDE，是Firefox的扩展插件，支持用户录制和回访测试。录制/回访模式存在局限性，对许多用户来说并不适合，因此第二个工具——Selenium WebDriver提供了各种语言环境的API来支持更多控制权和编写符合标准软件开发实践的应用程序。最后一个工具——SeleniumGrid帮助工程师使用Selenium API控制分布在一系列机器上的浏览器实例，支持并发运行更多测试。在项目内部，它们分别被称为“IDE”、“WebDriver”和“Grid”</p>
+<p>2、selenium IDE</p>
+<p>Selenium IDE 是一个带有执行界面的，用户录制或编写脚本的初级工具，</p>
+<p>它是一个 Firefox 插件，因此只能够在 Firefox 上使用Selenium IDE 还拥有导出功能，可以将录制的测试脚本导出为各种语言（Java、Python等）和各种 Selenium版本（Selenium RC 和WebDriver）的测试代码</p>
+<p>不仅仅是录制工具，还是一个完整的集成开发环境</p>
+<p><em>安装</em></p>
+<p>(1)、首先下载火狐浏览器：<a href="http://www.firefox.com.cn/download/" target="_blank" rel="external">http://www.firefox.com.cn/download/</a></p>
+<p>(2)、安装seleniumIDE，打开火狐浏览器，地址为：<a href="http://www.seleniumhq.org/download/" target="_blank" rel="external">http://www.seleniumhq.org/download/</a><br>下拉到seleniumIDE标题处，如图，点击最新版本<br><img src="http://b.hiphotos.baidu.com/exp/w=480/sign=2c2da0d555da81cb4ee682c56266d0a4/8326cffc1e178a8238423781f203738da977e891.jpg" alt=""></p>
+<p>弹出提示框后，允许就开始下载</p>
+<p><img src="http://d.hiphotos.baidu.com/exp/w=480/sign=9cc33eb6dd33c895a67e9973e1127397/2f738bd4b31c8701326cfbc7237f9e2f0708ff3d.jpg" alt=""></p>
+<p>下载完成后“立刻安装”，</p>
+<p>安装完成之后会提示重启生效</p>
+<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1498023461696&amp;di=31e8517e6f0ecde7954b419bfa081104&amp;imgtype=0&amp;src=http%3A%2F%2Fimage.lxway.com%2Fupload%2Ff%2F39%2Ff39012d7180e6cdcd629437729f9d557_thumb.png" alt=""><br><em>使用</em></p>
+<p>3、重启后firfox就会有个seleniumIDE的小图标，点击</p>
+<p>具体介绍使用方法虫师总结的相当详细了：ttp://www.cnblogs.com/fnng/archive/2011/10/23/2222157.html</p>
+<p>Selenium IDE 是多数用户接触的首款工具，比较适合没有编程经验的用户快速上手使用，熟悉Selenium 相关命令</p>
+<p>但并不建议所有自动化测试都使用 Selenium IDE ，浏览器限制，个性化定制低</p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2016/07/24/webdriver/" data-toggle="tooltip" data-placement="top" title="selenium-webdriver">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2016/07/06/appium(安装)/" data-toggle="tooltip" data-placement="top" title="安装Appium">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#selenium" title="selenium">selenium</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="" target="_blank">Alisa&#39;s Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">Foo</a></li>
+                    
+                        <li><a href="#" target="_blank">Bar</a></li>
+                    
+                        <li><a href="#" target="_blank">Example Friends</a></li>
+                    
+                        <li><a href="#" target="_blank">It helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "hexo-theme-huxblog";
+    var disqus_identifier = "http://yoursite.com/2016/07/24/seleniumIDE/";
+    var disqus_url = "http://yoursite.com/2016/07/24/seleniumIDE/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
 
     <!-- Footer -->
     <!-- Footer -->

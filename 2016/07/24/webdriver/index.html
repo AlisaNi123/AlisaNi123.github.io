@@ -13,11 +13,11 @@
 
     <title>
         
-          Alisa的博客 | Alisa&#39;s Blog
+          selenium-webdriver - Alisa的博客 | Alisa&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/i_dont_wanna_use_default_archives/2015/05/">
+    <link rel="canonical" href="http://yoursite.com/2016/07/24/webdriver/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -147,7 +147,201 @@
 
 
     <!-- Main Content -->
-    <!-- Default Archive layout, we use archives instead. -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('post-bg-2015.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#selenium" title="selenium">selenium</a>
+                        
+                    </div>
+                    <h1>selenium-webdriver</h1>
+                    <h2 class="subheading"> &quot;Eclipse+webdriver+java实现自动化&quot;</h2>
+                    <span class="meta">
+                        Posted by alisa on
+                        2016-07-24
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>1、什么是 WebDriver ？</p>
+<p>WebDriver 针对各个浏览器而开发，取代了嵌入到被测Web应用中的JavaScript。与浏览器的紧密集成支持创建更高级的测试，避免了 JavaScript安全模型导致的限制。</p>
+<p>除了来自浏览器厂商的支持，WebDriver还利用操作系统级的调用模拟用户输入。WebDriver支持 Firefox (FirefoxDriver)、IE (InternetExplorerDriver)、Opera (OperaDriver) 和Chrome (ChromeDriver)。它还支持Android (AndroidDriver)和iPhone (IPhoneDriver) 的移动应用测试。它还包括一个基于HtmlUnit的无界面实现，称为HtmlUnitDriver。</p>
+<p>WebDriver API可以通过Python、Ruby、Java和C#访问，支持开发人员使用他们偏爱的编程语言来创建测试。</p>
+<p>2、下载webdriver</p>
+<p>环境准备</p>
+<p>官网：<a href="http://www.seleniumhq.org/download/" target="_blank" rel="external">http://www.seleniumhq.org/download/</a></p>
+<p>例如下载的是：java版本：2.48.2  2015-10-09</p>
+<p>解压，得到以下文件夹：</p>
+<p>libs文件夹：包含各种Java相关的基础框架。<br>CHANGELOG：记录Selenium的变更情况。<br>Selenium-java-2.48.2.jar：Selenium主要API文件，在进行自动化测试是主要就靠这个类库来实现。<br>Selenium-java-2.48.2-srcs.jar：Selenium部分源码。</p>
+<p>3、环境准备</p>
+<p>（1）打开Eclipse，创建“New Project”，从“File”菜单,点击“Next”</p>
+<p><img src="http://www.yiibai.com/uploads/allimg/140927/15520252Y-3.jpg" alt=""></p>
+<p>（2）进入Libraries选项卡，并选中所有的JAR包文件，我们已经下载（请参阅环境搭建章）。添加引用Selenium webdriver的库文件夹中的所有JAR，selenium-java-2.42.2.jar和selenium-java-2.42.2-srcs.jar<br><img src="http://www.yiibai.com/uploads/allimg/140927/1552024Q3-5.jpg" alt=""></p>
+<p>若是已经有建好的项目，可以在右键点击“Libraries”，后选择“Bulid Path”——“configureBulid Path”“——-Add External JARS….”t添加Selenium webdriver的库文件夹中的所有JAR，selenium-java-2.42.2.jar和selenium-java-2.42.2-srcs.jar，点击“Apply”——“OK”</p>
+<p>新建一个class，并让它设置为main方法<br><img src="http://www.yiibai.com/uploads/allimg/140927/15520253B-8.jpg" alt=""></p>
+<p>然后就可以码代码了。</p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2016/10/29/MQTT/" data-toggle="tooltip" data-placement="top" title="MQTT简介">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2016/07/24/seleniumIDE/" data-toggle="tooltip" data-placement="top" title="selenium">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#selenium" title="selenium">selenium</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="" target="_blank">Alisa&#39;s Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">Foo</a></li>
+                    
+                        <li><a href="#" target="_blank">Bar</a></li>
+                    
+                        <li><a href="#" target="_blank">Example Friends</a></li>
+                    
+                        <li><a href="#" target="_blank">It helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "hexo-theme-huxblog";
+    var disqus_identifier = "http://yoursite.com/2016/07/24/webdriver/";
+    var disqus_url = "http://yoursite.com/2016/07/24/webdriver/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
 
     <!-- Footer -->
     <!-- Footer -->
