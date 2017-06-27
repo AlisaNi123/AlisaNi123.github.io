@@ -13,11 +13,11 @@
 
     <title>
         
-          简说Appium - Alisa的博客 | Alisa&#39;s Blog
+          接口测试 - Alisa的博客 | Alisa&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/2016/06/15/appium（简介）/">
+    <link rel="canonical" href="http://yoursite.com/2016/04/22/接口测试(1)/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -155,7 +155,7 @@
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('appium-bg-o.jpg')
+        background-image: url('post-bg-2015.jpg')
     }
 </style>
 <header class="intro-header" >
@@ -165,14 +165,14 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                          <a class="tag" href="/tags/#Appium" title="Appium">Appium</a>
+                          <a class="tag" href="/tags/#接口测试" title="接口测试">接口测试</a>
                         
                     </div>
-                    <h1>简说Appium</h1>
-                    <h2 class="subheading"> &quot;为什么我们要用appium&quot;</h2>
+                    <h1>接口测试</h1>
+                    <h2 class="subheading"> &quot;什么是接口测试&quot;</h2>
                     <span class="meta">
                         Posted by alisa on
-                        2016-06-15
+                        2016-04-22
                     </span>
                 </div>
             </div>
@@ -192,77 +192,67 @@
                 post-container">
 
                 <blockquote>
-<p>【今日寄语】<br><br>敏感与迟钝殊途同归，前者对人生看得太透，后者对人生看得太浅，两者都出相同的结论：人生没有意思！要活得有意思，应该在敏感与迟钝之间。</p>
+<p>【今日寄语】<br><br>世界上的许多人需要的其实不是实用的忠告，而是充满暖意的附和。​​​​​​</p>
+<p style="text-align:right;">  ——村上春树<br></p>
+
+
 </blockquote>
-<p style="text-align:right;">——周国平<br></p>
-
-
-<p>#Appium简介<br>Appium是由Sauce Labs提供的一款开源自动化框架，它使用WebDriver协议来驱动iOS和Androind应用。</p>
-<ul>
-<li><p>1 ，appium是开源的移动端自动化测试框架；</p>
-</li>
-<li><p>2，appium可以测试原生的、混合的、以及移动端的web项目；</p>
-</li>
-<li><p>3，appium可以测试ios，android应用（当然了，还有firefox os）；</p>
-</li>
-<li><p>4，appium是跨平台的，可以用在osx，windows以及linux桌面系统上；</p>
-</li>
-</ul>
-<p>#Appium理念：</p>
-<ul>
-<li><p>1，不需要为了自动化而且重新编译或修改测试app；</p>
-</li>
-<li><p>2，不应该让移动端自动化测试限定在某种语言和某个具体的框架；也就是说任何人都可以使用自己最熟悉最顺手的语言以及框架来做移动端自动化测试；</p>
-</li>
-<li><p>3，不要为了移动端的自动化测试而重新发明轮子，重新写一套惊天动地的api；也就是说webdriver协议里的api已经够好了，拿来改进一下就可以了；</p>
-</li>
-<li><p>4，移动端自动化测试应该是开源的；<br>#Appium设计</p>
-</li>
-</ul>
-<p>Appium使用的平台厂商提供的自动化框架包括以下几点：</p>
-<p>iOS:苹果的UiAutomation</p>
-<p>Androind4.2+：Google的UiAutomator</p>
-<p>Androind2.3+：Instrumentation</p>
-<p>WebDriver规范了一个客户端/服务器协议（被称为JSON WireProtocol）。基于该客户端/服务器架构，用任何语言编写的客户端都可以发送到相应的HTTP请求到服务器。Appium&amp;WebDriver客户端不是技术上测试框架——它们是自动化测试库。</p>
-<p>#Appium概念<br> C/S 架构</p>
-<p>  Appium 的核心是一个 web 服务器，它提供了一套 REST 的接口。它收到客户端的连接，监听到命令，接着在移动设备上执行这些命令，然后将执行结果放在 HTTP响应中返还给客户端。事实上，这种客户端/服务端的 架构给予了许多的可能性：比如我们可以使用任何实现了该客户端的语言来写我们的测试代码。比如我们可以把服务端放在不同 的机器上。比如我们可以只写测试代码，然后使用像 Sauce Labs 这样的云服务来解释命令。</p>
-<p>Session</p>
-<p>  自动化始终围绕一个session进行，客户端初始化一个seesion（会话）来与服务端交互，不同的语言有不同的实现方式，但是他们最终都是发送为一个POST请求给服务端，请求中包含一个JSON对象，被称作“desired capabilities”。此时，服务端就会开启一个自动化的 session，然后返回一个 session ID，session ID将会被用户发送后续的命令。</p>
-<p>Desired Capabilities</p>
-<p>  Desired capabilities 是一些键值对的集合 (比如，一个 map 或者 hash），客户端将这些键值对发给服务端，告诉服务端我们想要怎么测试。比如，我们可以把platformName capability 设置为 iOS，告诉 Appium 服务端，我们想要一个iOS 的 session，而不是一个 Android 的。我们也可以设置 safariAllowPopups capability 为 true，确保在 Safari 自动化 session 中，我们可以使用 JavaScript 来打开新窗口。参见 capabilities 文档，查看完整的 capabilities 列表。</p>
-<p>Appium Server</p>
-<p>  Appium server 是用 Node.js 写的。我们可以用源码编译或者从 NPM 直接安装。</p>
-<p>Appium 服务端</p>
-<p>  Appium 服务端有很多语言库 Java, Ruby, Python, PHP, javascript 和 C#，这些库都实现了 Appium 对 WebDriver 协议的扩展。当使用 Appium 的时候，你只需使用这些库代替常规的 WebDriver 库就可以了。 你可以从这里看到所有的库的列表。</p>
-<p>Appium.app, Appium.exe</p>
-<p>  我们提供了 GUI 封装的 Appium 服务端下载，它封装了运行 Appium服务端的所有依赖，而不需要担心怎样安装node.js。其中还包括一个Inspector工具，可以帮助你检查应用的界面层级，这样写测试用例时更方便</p>
-<p>#Appium原理架构<br>Appium Androind原理架构<br>1、架构图<br><img src="http://s3.sinaimg.cn/mw690/001LScvzgy6MPNMdiRs72&amp;690?_=6060019" alt=""><br>简易图<br><img src="http://s12.sinaimg.cn/mw690/001LScvzgy6MPNQJ3vl1b&amp;690?_=6060019" alt=""></p>
-<p>在Android端，appium基于WebDriver，并利用Bootstrap.js，最后通过调⽤用UiAutomator的命令，实现App的自动化测试。</p>
-<p>UiAutomator测试框架是Android SDK自带的App UI自动化测<br>试Java库。另外由于UiAutomator对H5的支持有限，appium引入了chromedriver来实现基于H5的自动化。</p>
-<p>2、主要原理：</p>
-<ul>
-<li>1.左边的WebDriver script是我们的selenium测试脚本</li>
-<li>2.中间是起的Appium的服务，Appium在这边起了一个Server（4723端口），跟selenium<br>Webdriver测试框架类似，Appium⽀支持标准的WebDriver JSONWireProtocol 。在这里提供<br>了一套web服务，Appium Server接收web driver 标准请求，解析请求内容，调⽤用对应的框<br>架响应操作。<br>如：脚本发送一个点击按钮的请求给appium server，</li>
-<li><ol>
-<li>appium server会把请求转发给中间件Bootstrap.jar ，它是用java写的，安装在手机上。Bootstrap 接收appium 的命令(4724端口)，最终通过调用UiAutomator的命令来实现。</li>
-</ol>
-</li>
-<li>4.最后执⾏行的结果由Bootstrap返回给appium server</li>
-<li>5.另外，appium还用到了chromedriver来支持基于H5（webview）的测试。</li>
-<li>Appium iOS原理架构<br>1、架构图<br><img src="http://s7.sinaimg.cn/mw690/001LScvzgy6MPPeB7rod6&amp;690?_=6060019" alt=""></li>
-</ul>
-<p>简易图<br><img src="http://s8.sinaimg.cn/mw690/001LScvzgy6MPPfFylxc7&amp;690?_=6060019" alt=""></p>
-<p>在IOS端，appium同样使用WebDriver的一套协议。与Android端测试框架不同的是，appium ios封装了apple的 Instruments框架，主要用了Instrument里的UI Automation（Apple的自动化测试框架），然后在设备中注入bootstrap.js进行监听。</p>
-<p>2.主要原理</p>
-<ul>
-<li>1.左边的WebDriver script是selenium测试脚本</li>
-<li>2.中间是起的Appium的服务，Appium在这边起了一个Server（4723端口），跟seleniumWebdriver测试框架类似，Appium支持标准的WebDriver JSONWireProtocol 。在这里提供<br>了一套web服务，Appium Server接收web driver 标准请求，解析请求内容，调⽤用对应的框<br>架响应操作。<br>如：脚本发送一个点击按钮的请求给appium server，</li>
-<li><ol>
-<li>appium server调用instruments.js 启动一个socket server，同时分出一个子进程运行instruments.app，将bootstrap.js（一个UIAutomation脚本）注入到device用于和外界进行交<br>互。</li>
-</ol>
-</li>
-<li>4.对于H5的操作，运用了 iOS webkit debug proxy来实现<br><a href="http://appium.io/slate/en/v1.0.0/?java#ios-support" target="_blank" rel="external">http://appium.io/slate/en/v1.0.0/?java#ios-support</a><br><a href="https://github.com/google/ios-webkit-debug-proxy" target="_blank" rel="external">https://github.com/google/ios-webkit-debug-proxy</a></li>
-</ul>
+<h2 id="一、基础介绍"><a href="#一、基础介绍" class="headerlink" title="一、基础介绍"></a>一、基础介绍</h2><p>1、什么是接口<br>我们常说的接口一般指2种<br>1）API：应用程序编程接口<br>2）GUI：图形用户界面（接口）<br>这里我们主要说API——接口测试</p>
+<p>2、接口测试的目的</p>
+<p>测试接口的正确性和稳定性（持续集成是接口测试的核心）</p>
+<p>3、接口测试的原理</p>
+<p>模拟客户端向服务器发送请求报文，服务器接收请求报文后对相应的报文做处理并向客户端返回应答，客户端接收应答的一个过程。</p>
+<p>4、接口测试的重点</p>
+<p>检查数据的交换，传递和控制管理过程，还包括处理的次数</p>
+<p>5、接口测试用例设计</p>
+<p>接口测试对象主要为接口，但随着系统复杂度越来越高，接口越来越多，完全覆盖是一件很困难的事情，且实际过程中任意接口的变动都可能导致我们接口测试用例不可用，<br>所以通常情况下主要测试最外层的两类接口:数据进入系统接口（调用外部系统的参数为本系统使用）和数据流出系统接口（验证系统处理后的数据是否正常）。<br>PS：设计用例时还需要注意外部接口提供给使用这些接口的外部用户什么功能，外部用户真正需要什么功能。</p>
+<p>6、接口测试的优点</p>
+<p>天生为高复杂性的平台带来高效的缺陷监测和质量监督能力；平台越复杂，系统越庞大，接口测试的效果越明显（提高测试效率，提升用户体验，降低研发成本）</p>
+<h2 id="二、接口分类及分析方法，测试重点"><a href="#二、接口分类及分析方法，测试重点" class="headerlink" title="二、接口分类及分析方法，测试重点"></a>二、接口分类及分析方法，测试重点</h2><p>1、功能分类</p>
+<p>1）功能间接口：系统中功能模块间的接口，比如：ERP系统中采购模块和库存模块之间的接口</p>
+<pre><code>特点：一般部署在同一个服务器中，并且使用同一个数据库
+测试方法：通常采用黑盒测试方法，注意接口数据在不同模块间的走向；尤其是接口间的逻辑控制关系
+例如：销售发货，检查库存可用量，如可用量不足，则不允许发货
+</code></pre><p>2）系统间接口：不同系统间的接口，比如：银行的各个系统间的接口。核心系统和各个外围系统之间都是此类接口</p>
+<pre><code>特点：部署在不同服务器上，不仅采用不同的数据库，而且数据库类型还有可能不同
+测试方法：通常采用白盒测试方法，关注系统间接口的实现方式
+例如：接口文件类型、接口文件格式、接口文件处理方式等
+</code></pre><p>2、类型分类<br>1）业务接口：系统或功能间有业务逻辑关系，比如：ERP系统中，采购入库后，会生成库存入库单，影响可用量等，也可称为：联机接口</p>
+<pre><code>特点：接口间有业务逻辑的上下游关系，可能会涉及跨系统或者模块的逻辑控制，以及反向操作
+测试方法：通常黑盒测试方法，注重分析业务逻辑，采用路径覆盖法分析，重点：注意正向反向操作的测试
+</code></pre><p>2）数据接口：接口数据有上下游关系，比如：企业征信系统，要通过数据交换平台获取核心系统的数据，也可称为：批量接口</p>
+<pre><code>特点：系统间只存在数据的上下游关系，而且都是进行批量处理
+测试方法：通常采用白盒测试方法，关注数据的文件格式，以及记录数及内容是否正确，还要考虑数据加密问题
+</code></pre><p>3、数据方向分类<br>1）单向接口：数据在接口中是单向流动，但根据实现方式分为单项推或单项取</p>
+<p>比如：数据仓库和各系统间的接口基本都是单项的，一方面前端系统向数据仓库推送数据，一方面后端系统从数据仓库取数据仓库提供的数据<br>特点：不管是单向推还是单项取，都会有一个FTP地址，存放指定数据文件，并且有定时存取规则，可从日志中查看结果<br>测试方法：通常采用黑盒白盒结合的测试方法，着重数据文件格式，是否按照规则存取等</p>
+<p>2）双向接口：两个系统间的数据有往来，比如：综合报文处理系统和核心系统，从何报文处理系统即接受核心系统发送的数据，又要将处理结果反馈给核心系统</p>
+<pre><code>特点：可以将不同数据方向的接口分开分析，当做两个单项接口，注意来往数据通常具有关联性
+测试方法：通常采用黑盒白盒结合的测试方法，注重来往数据的关联性，合理设计测试数据，制定测试执行计划
+</code></pre><p>4、数据读写方式分类</p>
+<p>1）单独读写接口：数据在接口中不仅单项流动，而且都是读或者写的单独操作，比如：前面提到的各系统和数据仓库的数据交换</p>
+<pre><code>特点：与单项接口相似
+测试方法：黑盒白盒相结合的方法，注意读写的权限，以及单接口功能未正常实现时，系统是否有异常处理机制
+</code></pre><p>2）即读又写接口：系统间接口处理时，即读取又写入，比如：贷款合同管理和核心系统，先读取核心系统中的合同信息，添加合同成功后，又将合同编号回写到核心系统中<br>     特点：一般都是业务类接口，非数据类接口，并且都有逻辑控制的要求<br>     测试方法：通常采用黑盒测试方法，注意业务逻辑控制，不仅要检查读取的数据是否正确，还要检查回填数据是否正确</p>
+<p>5、层级分类<br>1）直接（联机）接口：系统或模块间的接口是直接联通的</p>
+<pre><code>特点：直接联通
+测试方法：黑盒白盒相结合的方法，根据接口特征分析即可
+</code></pre><p>2）间接（非联机）接口：系统间接口不是直接联通，通过第三方中转后，才进行连接，比如：综合报文系统和核心系统，中间隔着一个ESB</p>
+<pre><code>特点：接口间的中间层，会进行处理，才会将数据发送到接口系统，这个不会涉及业务逻辑，只是数据格式转换
+测试方法：黑盒白盒相结合的方法，可直接忽略中间层的存在，设计测试用例；但出现问题时，一定要注意中间层处理是否正确，并且，测试中间层异常时，系统处理是否正确
+</code></pre><h2 id="三、接口测试实例（思维导图）"><a href="#三、接口测试实例（思维导图）" class="headerlink" title="三、接口测试实例（思维导图）"></a>三、接口测试实例（思维导图）</h2><p>1、接口测试点<br><img src="http://images2015.cnblogs.com/blog/983980/201705/983980-20170521093935228-5435306.png" alt=""></p>
+<p>2、接口测试延伸<br><img src="http://images2015.cnblogs.com/blog/983980/201705/983980-20170521094026463-386492752.png" alt=""></p>
+<h2 id="四、怎么做好接口测试"><a href="#四、怎么做好接口测试" class="headerlink" title="四、怎么做好接口测试"></a>四、怎么做好接口测试</h2><p>1、接口正确性是双方保障，都要进行测试</p>
+<p>2、根据接口类型，合理进行测试分析，注意测试重点</p>
+<p>3、注重业务逻辑分析，包括正向反向操作</p>
+<p>4、注重数据文件检查</p>
+<h2 id="五、接口测试的工具"><a href="#五、接口测试的工具" class="headerlink" title="五、接口测试的工具"></a>五、接口测试的工具</h2><p>可以进行接口测试的工具很多，这里简单介绍几个：</p>
+<p>1、loadrunner：一款商业性能测试工具，用来做接口测试，很好很强大</p>
+<p>2、jmeter：一款开源的性能测试工具，操作简单，方便，既有jdbc request操作数据库数据，也有http request和soap request应对测试</p>
+<p>3、poster：火狐浏览器自带接口测试工具，插件中安装即可，界面简单明了，容易上手</p>
+<p>4、postman：谷歌浏览器的扩展工具，谷歌商店中选中安装，界面同poster差别不大，界面简洁</p>
+<p>5、soapui：开源测试工具，通过soap/http来检查、调用、实现Web Service的功能/负载/符合性测试；<br>该工具既可作为一个单独的接口测试工具使用，也可利用插件集成到Eclipse，maven2.X，Netbeans 和intellij中使用。</p>
+<p>PS：写在最后：</p>
+<p>以保证系统的正确和稳定为核心，以持续集成为手段，提高测试效率，提升用户体验，降低产品研发成本，关注持续集成是接口测试的灵魂，否则接口测试带来工作量会成指数增长！</p>
 
 
                 <hr>
@@ -272,12 +262,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2016/07/06/appium(安装)/" data-toggle="tooltip" data-placement="top" title="安装Appium">&larr; Previous Post</a>
+                            <a href="/2016/06/15/appium（简介）/" data-toggle="tooltip" data-placement="top" title="简说Appium">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/2016/04/22/接口测试(1)/" data-toggle="tooltip" data-placement="top" title="接口测试">Next Post &rarr;</a>
+                            <a href="/2015/12/21/js-mesview/" data-toggle="tooltip" data-placement="top" title="js消息对话框">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -310,7 +300,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Appium" title="Appium">Appium</a>
+                          <a class="tag" href="/tags/#接口测试" title="接口测试">接口测试</a>
                         
                     </div>
                 </section>
@@ -348,8 +338,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "hexo-theme-huxblog";
-    var disqus_identifier = "http://yoursite.com/2016/06/15/appium（简介）/";
-    var disqus_url = "http://yoursite.com/2016/06/15/appium（简介）/";
+    var disqus_identifier = "http://yoursite.com/2016/04/22/接口测试(1)/";
+    var disqus_url = "http://yoursite.com/2016/04/22/接口测试(1)/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

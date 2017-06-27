@@ -90,6 +90,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archives/">Archives</a>
                         </li>
                         
@@ -98,13 +105,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -191,7 +191,13 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>1、adb devices  查看设备 这个命令是查看当前连接的设备， 连接到计算机的android设备或者模拟器将会列出显示（如图）<br><img src="http://upload-images.jianshu.io/upload_images/4047685-2cd5c1cab04a4a10.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>只提示“List of devices attached” 没有罗列设备，两种情况下遇到过这个问题：（1）手机设置导致，确定手机已经连接到电脑上，且手机 “设置-&gt;开发者选项-&gt;开发人员选项”和“USB调试”为打开状态，在“是否允许USB调试”点击确定；（2）adb版本太老了，更新一下到最新的版本试试。</p>
+                <blockquote>
+<p>【今日寄语】<br><br>凡是在虚构中张扬的，都是在现实中缺失的。​​​ ​​​​​​</p>
+<p style="text-align:right;"> ——————梁晓声 ​​​<br></p>
+
+
+</blockquote>
+<p>1、adb devices  查看设备 这个命令是查看当前连接的设备， 连接到计算机的android设备或者模拟器将会列出显示（如图）<br><img src="http://upload-images.jianshu.io/upload_images/4047685-2cd5c1cab04a4a10.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>只提示“List of devices attached” 没有罗列设备，两种情况下遇到过这个问题：（1）手机设置导致，确定手机已经连接到电脑上，且手机 “设置-&gt;开发者选项-&gt;开发人员选项”和“USB调试”为打开状态，在“是否允许USB调试”点击确定；（2）adb版本太老了，更新一下到最新的版本试试。</p>
 <p>2、 adb install (apk在PC上的路径/)*.apk （会将apk文件上传到了模拟器自带操作系统的data/app目录下了） 安装应用</p>
 <p>3、adb uninstall   apk的包名（用EC切换到DDMS的File Explorer中查看，data/data下）， 卸载app<br>也可以使用：adb shell pm uninstall  com.funnybaby.*（包名）卸载</p>
 <p>4、adb shell 通过命令，就可以进入设备或模拟器的shell环境中，在这个Linux Shell中，你可以执行各种Linux的命令<br><img src="http://upload-images.jianshu.io/upload_images/4047685-35927cf78d0520c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>另外如果只想执行一条shell命令，可以采用以下的方式：<br>adb shell [command]<br>如：adb shell dmesg会打印出内核的调试信息</p>

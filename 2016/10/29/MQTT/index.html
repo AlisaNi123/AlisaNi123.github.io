@@ -90,6 +90,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archives/">Archives</a>
                         </li>
                         
@@ -98,13 +105,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -191,7 +191,13 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p><strong><em>MQTT</em></strong>是轻量级<em>基于代理的**</em>发布/订阅<em>**的消息传输协议</em>，它可以通过很少的代码和带宽和远程设备连接。例如通过卫星和代理连接，通过拨号和医疗保健提供者连接，以及在一些自动化或小型设备上，而且由于小巧，省电，协议开销小和能高效的向一和多个接收者传递信息，故同样适用于称动应用设备上。<br>相信在想深入学习这协议必是奔着解决某个问题而来的，上面给出了适用的场景，我之所以想深入的学习和了解这个协议，理由如下：<br>1、可以实现手机消息推送（PUSH）<br>2、协议简单，最小的头部只需2个字节，特别适合于嵌入式中。<br>3、这是个了解什么是协议绝好的例子。相比于其它复杂的协议例如tcp，http协议，至少说明文档看的下去。<br>在这里，我以推送为例子说明，虽然现在现成的推送解决方案已经比较成熟，但是这个Repeat ReInvent the Whell还是要做一下，什么都是拿来主义，和搬运工有什么区别。</p>
+                <blockquote>
+<p>【今日寄语】<br><br>决定我们成为什么样的人，不是我们的能力，而是我们的选择。​​​</p>
+<p style="text-align:right;">————J•K•罗琳<br></p>
+
+
+</blockquote>
+<p><strong><em>MQTT</em></strong>是轻量级<em>基于代理的**</em>发布/订阅<em>**的消息传输协议</em>，它可以通过很少的代码和带宽和远程设备连接。例如通过卫星和代理连接，通过拨号和医疗保健提供者连接，以及在一些自动化或小型设备上，而且由于小巧，省电，协议开销小和能高效的向一和多个接收者传递信息，故同样适用于称动应用设备上。<br>相信在想深入学习这协议必是奔着解决某个问题而来的，上面给出了适用的场景，我之所以想深入的学习和了解这个协议，理由如下：<br>1、可以实现手机消息推送（PUSH）<br>2、协议简单，最小的头部只需2个字节，特别适合于嵌入式中。<br>3、这是个了解什么是协议绝好的例子。相比于其它复杂的协议例如tcp，http协议，至少说明文档看的下去。<br>在这里，我以推送为例子说明，虽然现在现成的推送解决方案已经比较成熟，但是这个Repeat ReInvent the Whell还是要做一下，什么都是拿来主义，和搬运工有什么区别。</p>
 <p><strong>一、需要的环境：</strong><br>1、PHP+Apache或Nginx<br>2、安装开源代理<a href="http://www.xuebuyuan.com/" target="_blank" rel="external">程序</a>Mosquitto，这里用其做为代理服务器，负责连接和分发。<br>安装方法很简单，<a href="http://mosquitto.org/files/" target="_blank" rel="external">http://mosquitto.org/files/</a>   binary是编译好的，source是源码安装需要的（make &amp; make install 就行）<br>唯 一要配置的就是在解压后的config.mk,安装完后设置文件是mosquitto.conf<br>当然主要是设置是否支持ssl，还有就是config.mk最下面的安装位置的设定。这里一切默认。<br>默认启动是绑定的IP是本地IP，端口是1883可以在mosquitto.conf里设置（要去掉前面的#字注释），linux 中 -c 可以指定设置文件并运行<br>比 如： mosquitto -c /etc/mosquitto.conf</p>
 <p><strong>二、协议初解</strong><br>先说一下整个协议的构造，整体上协议可拆分为：<br>            <strong>        固定头部+可变头部+消息体</strong><br>协议说白了就是对于双方通信的一个约定，比如传过来一段字符流，第1个字节表示什么，第2个字节表示什么。。。。一个约定。<br>所以在固定头部的构造如下：<br><img src="http://upload-images.jianshu.io/upload_images/4047685-334dcd72e1ef1886?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>1、MessageType(0和15保留，共占4个字节)</p>
 <p>public $operations=array( “MQTT_CONNECT”=&gt;1,//请求连接 “MQTT_CONNACK”=&gt;2,//请求应答 “MQTT_PUBLISH”=&gt;3,//发布消息 “MQTT_PUBACK”=&gt;4,//发布应答 “MQTT_PUBREC”=&gt;5,//发布已接收，保证传递1 “MQTT_PUBREL”=&gt;6,//发布释放，保证传递2 “MQTT_PUBCOMP”=&gt;7,//发布完成，保证传递3 “MQTT_SUBSCRIBE”=&gt;8,//订阅请求 “MQTT_SUBACK”=&gt;9,//订阅应答 “MQTT_UNSUBSCRIBE”=&gt;10,//取消订阅 “MQTT_UNSUBACK”=&gt;11,//取消订阅应答 “MQTT_PINGREQ”=&gt;12,//ping请求 “MQTT_PINGRESP”=&gt;13,//ping响应 “MQTT_DISCONNECT”=&gt;14//断开连接 );</p>
@@ -214,9 +220,13 @@
 
                 <ul class="pager">
                     
+                        <li class="previous">
+                            <a href="/2016/12/08/appium报错/" data-toggle="tooltip" data-placement="top" title="Appium报错">&larr; Previous Post</a>
+                        </li>
+                    
                     
                         <li class="next">
-                            <a href="/2016/07/24/seleniumIDE/" data-toggle="tooltip" data-placement="top" title="selenium">Next Post &rarr;</a>
+                            <a href="/2016/08/10/selenium-scre/" data-toggle="tooltip" data-placement="top" title="webdriver截图的使用">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

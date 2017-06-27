@@ -90,6 +90,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archives/">Archives</a>
                         </li>
                         
@@ -98,13 +105,6 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -191,7 +191,12 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p><img src="http://upload-images.jianshu.io/upload_images/4047685-3d11712113ac0986.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="端口被占用.png"></p>
+                <blockquote>
+<p>【今日寄语】<br><br>决定我们成为什么样的人，不是我们的能力，而是我们的选择。​​​</p>
+<p style="text-align:right;">————J•K•罗琳<br></p>
+
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/4047685-3d11712113ac0986.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="端口被占用.png"></p>
 <p>#方式一<br>5037为adb默认端口，若5037端口被占用，查看占用端口的进程<br>PIDC:\Users\wwx229495&gt;netstat -aon|findstr 5037<br>TCP    127.0.0.1:5037         0.0.0.0:0              LISTENING       8292<br>通过PID查看所有进程C:\Users\qq&gt;tasklist /fi “PID eq 8292”映像名称<br>PID 会话名 会话#  内存使用========================= ======== ================ =========== ============svchost.exe 3676 Services                   0     13,800 K<br>杀死占用端口的进程C:\Users\qq&gt;taskkill /pid 8292 /f<br>成功: 已终止 PID 为 8292 的进程。</p>
 <p>#方式二<br>自己配置 adb server 端口，使用一个生僻的值。<br>很简单，只要在系统环境变量中定义 ANDROID_ADB_SERVER_PORT 的值即可。<br>最好选择一个5位数的端口号（10000 ~ 65535），不易重复。<br>win下只要在环境变量中增加一个ANDROID_ADB_SERVER_PORT ，值填你自己定义的端口。<br><a href="http://lib.csdn.net/base/linux" target="_blank" rel="external">Linux</a>下只要 export $ANDROID_ADB_SERVER_PORT = 自定义端口，即可。</p>
 <p>最后的最后我反正是重启电脑才好的<br>ps：也有可能是你的酷狗播放器/  360/金山软件（sjk-daemon.exe占用） 占用5037端口，卸了重启就OK了</p>
