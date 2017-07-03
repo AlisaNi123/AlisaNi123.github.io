@@ -90,14 +90,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archives/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archives/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -193,10 +193,11 @@
 
                 <blockquote>
 <p>【今日寄语】<br><br>生活就是充满了令人恐惧的未知。。​​​</p>
-<p></p><p style="text-align:right;">————雷秋乔伊斯<br></p><p></p>
+<p style="text-align:right;">————雷秋乔伊斯<br></p>
+
+</blockquote>
 <p>##Python文件读写##<br>打开和关闭文件<br><br>Python提供了必要的函数和方法进行默认情况下的文件基本操作。你可以用file对象做大部分的文件操作<br><br><br>open函数<br><br><br>先用Python内置的open()函数打开一个文件，创建一个file对象，相关的辅助方法才可以调用它进行读写。<br><br>语法：file object = open(file_name [, access_mode][, buffering])<br><br>各个参数的细节如下：<br><br>file_name：file_name变量是一个包含了你要访问的文件名称的字符串值<br><br>access_mode：access_mode决定了打开文件的模式：只读，写入，追加等。所有可取值见如下的完全列表。这个参数是非强制的，默认文件访问模式为只读(r)<br><br>buffering:如果buffering的值被设为0，就不会有寄存。如果buffering的值取1，访问文件时会寄存行。如果将buffering的值设为大于1的整数，表明了这就是的寄存区的缓冲大小。如果取负值，寄存区的缓冲大小则为系统默认<br></p>
 <p>##Python读模式详解##<br>r    以只读方式打开文件。文件的指针将会放在文件的开头。这是默认模式<br><br><br>rb    以二进制格式打开一个文件用于只读。文件指针将会放在文件的开头。这是默认模式<br><br><br>r+    打开一个文件用于读写。文件指针将会放在文件的开头<br><br><br>rb+    以二进制格式打开一个文件用于读写。文件指针将会放在文件的开头<br><br><br>w    打开一个文件只用于写入。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件<br><br><br>wb    以二进制格式打开一个文件只用于写入。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件<br><br><br>w+    打开一个文件用于读写。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件<br><br><br>wb+    以二进制格式打开一个文件用于读写。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件<br><br><br>a    打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入<br><br><br>ab    以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入<br><br><br>a+    打开一个文件用于读写。如果该文件已存在，文件指针将会放在文件的结尾。文件打开时会是追加模式。如果该文件不存在，创建新文件用于读写<br><br><br>ab+    以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。如果该文件不存在，创建新文件用于读写<br><br></p>
-</blockquote>
 <p>##Python File对象的属性##<br>一个文件被打开后，你有一个file对象，你可以得到有关该文件的各种信息。<br><br>以下是和file对象相关的所有属性：<br><br>file.closed    返回true如果文件已被关闭，否则返回 false。<br><br>file.mode    返回被打开文件的访问模式。<br><br>file.name    返回文件的名称。<br><br>file.softspace    如果用print输出后，必须跟一个空格符，则返回false。否则返回true。<br></p>
 <p>##Python 文件读写##<br>读文件<br><br>    read<br><br>    readline<br><br>    readlines<br><br>写文件<br><br><br>    write<br><br>    writelines<br><br>注意写文件方式（w, w+, a, a+）<br></p>
 <p>##Python 异常处理##<br>什么是异常？<br><br>异常即是一个事件，该事件会在程序执行过程中发生，影响了程序的正常执行<br><br>一般情况下，在Python无法正常处理程序时就会发生一个异常<br><br>异常是Python对象，表示一个意外情况<br><br>当Python脚本发生异常时我们需要捕获处理它，否则程序会终止执行<br><br>    Python标准异常（Build-in Exceptions）列表<br><br>    <a href="https://docs.python.org/2/library/exceptions.html?highlight=except#moduleexceptions" target="_blank" rel="external">https://docs.python.org/2/library/exceptions.html?highlight=except#moduleexceptions</a><br><br></p>
