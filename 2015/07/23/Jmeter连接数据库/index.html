@@ -13,11 +13,11 @@
 
     <title>
         
-          Alisa的博客 | Alisa&#39;s Blog
+          Jmeter连接数据库 - Alisa的博客 | Alisa&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/tags/Python/">
+    <link rel="canonical" href="http://yoursite.com/2015/07/23/Jmeter连接数据库/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -147,7 +147,199 @@
 
 
     <!-- Main Content -->
-    <!-- Default Archive layout, we use archives instead. -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('post-bg-2015.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#Jmeter" title="Jmeter">Jmeter</a>
+                        
+                    </div>
+                    <h1>Jmeter连接数据库</h1>
+                    <h2 class="subheading"> &quot;连接DB2/MYSQL&quot;</h2>
+                    <span class="meta">
+                        Posted by alisa on
+                        2015-07-23
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>【今日寄语】<br><br>你必须只有内心丰富，才能摆脱这些生活表面的相似。​​​</p>
+<p style="text-align:right;">————王朔《致女儿书》<br></p>
+
+</blockquote>
+<p>##连接DB2<br></p>
+<p>　　1、将db2数据库驱动db2java.jar、db2jcc.jar放入jmeter的lib/下，同时也要放入本地jdk目录下例如：C:\Program Files\Java\jdk1.7.0_751\jre\lib\ext</p>
+<p>　　db2安装目录下以linux为例/安装的目录/db2admin/sqllib/java,db2java驱动原本为zip格式，需要传入本地后改为.jar格式</p>
+<p>　　2、在Jmeter中添加JDBC配置文件（JDBC Connection Configuration）<br>　　路径：右键添加——配置文件——JDBC Connection Configuration</p>
+<p>　　3、在JDBC Connection Configuration中设置连接，<br><br>　　Database URL：填入需要连接的MYSQL数据库例如：jdbc:db2://localhost:3306/test<br><br>　　localhost为ip，3306为端口号，test为连接的数据库<br><br>　　（如果需要一个请求执行多条Sql语句应该写成jdbc:db2://localhost:3306/test?user=root&amp;password=&amp;allowMultiQueries=true）<br><br>　　JDBC Driver class：com.ibm.db2.jcc.DB2Driver（JCC表示通过DB2jcc驱动连接）<br><br>　　Username 与Password 输入连接时候用的用户名与密码</p>
+<p>　　4、设置完成后添加JDBC Request，路径：右键添加——Sampler——JDBC Request<br>　　SQL Query中输入SQL语句。</p>
+<p>##连接Mysql</p>
+<p>　　1、将连接的mysql-connector-java-5.1.26-bin.jar放入jmeter的lib/下</p>
+<p>　　2、在Jmeter中添加JDBC配置文件（JDBC Connection Configuration）<br>　　路径：右键添加——配置文件——JDBC Connection Configuration</p>
+<p>　　3、在JDBC Connection Configuration中设置连接，<br><br>　　Database URL：填入需要连接的MYSQL数据库例如：jdbc:mysql://localhost:3306/test<br><br>　　localhost为ip，3306为端口号，test为连接的数据库<br><br>　　（如果需要一个请求执行多条Sql语句应该写成jdbc:mysql://localhost:3306/test?user=root&amp;password=&amp;allowMultiQueries=true）<br><br>　　JDBC Driver class：com.mysql.jdbc.Driver<br><br>　　Username 与Password 输入连接时候用的用户名与密码<br></p>
+<p>　　4、设置完成后添加JDBC Request，路径：右键添加——Sampler——JDBC Request<br>　　Variable Name输入连接池信息，默认输入为：MySQL<br>　　SQL Query中输入SQL语句。<br><img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&amp;quality=100&amp;size=b4000_4000&amp;sec=1500777202&amp;di=45d0a9297af6a4080da16087a8e32cfe&amp;src=http://img4.duitang.com/uploads/item/201608/11/20160811152704_U4SRi.jpeg" alt="">
+　　</p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2015/12/21/js-mesview/" data-toggle="tooltip" data-placement="top" title="js消息对话框">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2015/07/06/adb端口被占用/" data-toggle="tooltip" data-placement="top" title="adb端口被占用">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Jmeter" title="Jmeter">Jmeter</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="" target="_blank">Alisa&#39;s Blog</a></li>
+                    
+                        <li><a href="2601129567" target="_blank">QQ</a></li>
+                    
+                        <li><a href="http://www.51testing.com/html/91/n-3712591.html" target="_blank">Example Friends</a></li>
+                    
+                        <li><a href="#" target="_blank">It helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "hexo-theme-huxblog";
+    var disqus_identifier = "http://yoursite.com/2015/07/23/Jmeter连接数据库/";
+    var disqus_url = "http://yoursite.com/2015/07/23/Jmeter连接数据库/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
 
     <!-- Footer -->
     <!-- Footer -->
