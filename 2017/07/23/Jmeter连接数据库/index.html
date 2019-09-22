@@ -13,11 +13,11 @@
 
     <title>
         
-          adb端口被占用 - Alisa的博客 | Alisa&#39;s Blog
+          Jmeter连接数据库 - Alisa的博客 | Alisa&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/2015/07/06/adb端口被占用/">
+    <link rel="canonical" href="http://yoursite.com/2017/07/23/Jmeter连接数据库/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -165,14 +165,14 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                          <a class="tag" href="/tags/#常用工具" title="常用工具">常用工具</a>
+                          <a class="tag" href="/tags/#Jmeter" title="Jmeter">Jmeter</a>
                         
                     </div>
-                    <h1>adb端口被占用</h1>
-                    <h2 class="subheading"> &quot;默认端口被占用解决的方法&quot;</h2>
+                    <h1>Jmeter连接数据库</h1>
+                    <h2 class="subheading"> &quot;连接DB2/MYSQL&quot;</h2>
                     <span class="meta">
                         Posted by alisa on
-                        2015-07-06
+                        2017-07-23
                     </span>
                 </div>
             </div>
@@ -192,14 +192,22 @@
                 post-container">
 
                 <blockquote>
-<p>【今日寄语】<br><br>决定我们成为什么样的人，不是我们的能力，而是我们的选择。​​​</p>
-<p style="text-align:right;">————J•K•罗琳<br></p>
+<p>【今日寄语】<br><br>你必须只有内心丰富，才能摆脱这些生活表面的相似。​​​</p>
+<p style="text-align:right;">————王朔《致女儿书》<br></p>
 
 </blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/4047685-3d11712113ac0986.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="端口被占用.png"></p>
-<p>#方式一<br>5037为adb默认端口，若5037端口被占用，查看占用端口的进程<br>PIDC:\Users\wwx229495&gt;netstat -aon|findstr 5037<br>TCP    127.0.0.1:5037         0.0.0.0:0              LISTENING       8292<br>通过PID查看所有进程C:\Users\qq&gt;tasklist /fi “PID eq 8292”映像名称<br>PID 会话名 会话#  内存使用========================= ======== ================ =========== ============svchost.exe 3676 Services                   0     13,800 K<br>杀死占用端口的进程C:\Users\qq&gt;taskkill /pid 8292 /f<br>成功: 已终止 PID 为 8292 的进程。</p>
-<p>#方式二<br>自己配置 adb server 端口，使用一个生僻的值。<br>很简单，只要在系统环境变量中定义 ANDROID_ADB_SERVER_PORT 的值即可。<br>最好选择一个5位数的端口号（10000 ~ 65535），不易重复。<br>win下只要在环境变量中增加一个ANDROID_ADB_SERVER_PORT ，值填你自己定义的端口。<br><a href="http://lib.csdn.net/base/linux" target="_blank" rel="external">Linux</a>下只要 export $ANDROID_ADB_SERVER_PORT = 自定义端口，即可。</p>
-<p>最后的最后我反正是重启电脑才好的<br>ps：也有可能是你的酷狗播放器/  360/金山软件（sjk-daemon.exe占用） 占用5037端口，卸了重启就OK了</p>
+<p>##连接DB2<br></p>
+<p>　　1、将db2数据库驱动db2java.jar、db2jcc.jar放入jmeter的lib/下，同时也要放入本地jdk目录下例如：C:\Program Files\Java\jdk1.7.0_751\jre\lib\ext</p>
+<p>　　db2安装目录下以linux为例/安装的目录/db2admin/sqllib/java,db2java驱动原本为zip格式，需要传入本地后改为.jar格式</p>
+<p>　　2、在Jmeter中添加JDBC配置文件（JDBC Connection Configuration）<br>　　路径：右键添加——配置文件——JDBC Connection Configuration</p>
+<p>　　3、在JDBC Connection Configuration中设置连接，<br><br>　　Database URL：填入需要连接的MYSQL数据库例如：jdbc:db2://localhost:3306/test<br><br>　　localhost为ip，3306为端口号，test为连接的数据库<br><br>　　（如果需要一个请求执行多条Sql语句应该写成jdbc:db2://localhost:3306/test?user=root&amp;password=&amp;allowMultiQueries=true）<br><br>　　JDBC Driver class：com.ibm.db2.jcc.DB2Driver（JCC表示通过DB2jcc驱动连接）<br><br>　　Username 与Password 输入连接时候用的用户名与密码</p>
+<p>　　4、设置完成后添加JDBC Request，路径：右键添加——Sampler——JDBC Request<br>　　SQL Query中输入SQL语句。</p>
+<p>##连接Mysql</p>
+<p>　　1、将连接的mysql-connector-java-5.1.26-bin.jar放入jmeter的lib/下</p>
+<p>　　2、在Jmeter中添加JDBC配置文件（JDBC Connection Configuration）<br>　　路径：右键添加——配置文件——JDBC Connection Configuration</p>
+<p>　　3、在JDBC Connection Configuration中设置连接，<br><br>　　Database URL：填入需要连接的MYSQL数据库例如：jdbc:mysql://localhost:3306/test<br><br>　　localhost为ip，3306为端口号，test为连接的数据库<br><br>　　（如果需要一个请求执行多条Sql语句应该写成jdbc:mysql://localhost:3306/test?user=root&amp;password=&amp;allowMultiQueries=true）<br><br>　　JDBC Driver class：com.mysql.jdbc.Driver<br><br>　　Username 与Password 输入连接时候用的用户名与密码<br></p>
+<p>　　4、设置完成后添加JDBC Request，路径：右键添加——Sampler——JDBC Request<br>　　Variable Name输入连接池信息，默认输入为：MySQL<br>　　SQL Query中输入SQL语句。<br><img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&amp;quality=100&amp;size=b4000_4000&amp;sec=1500777202&amp;di=45d0a9297af6a4080da16087a8e32cfe&amp;src=http://img4.duitang.com/uploads/item/201608/11/20160811152704_U4SRi.jpeg" alt="">
+　　</p>
 
 
                 <hr>
@@ -209,12 +217,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2015/12/21/js-mesview/" data-toggle="tooltip" data-placement="top" title="js消息对话框">&larr; Previous Post</a>
+                            <a href="/2019/09/22/myblog/" data-toggle="tooltip" data-placement="top" title="myblog">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/2015/06/23/Eclipse常用命令/" data-toggle="tooltip" data-placement="top" title="Eclipse常用快捷键">Next Post &rarr;</a>
+                            <a href="/2017/06/03/夜神模拟器/" data-toggle="tooltip" data-placement="top" title="第三方模拟器跑自动化case">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -247,7 +255,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#常用工具" title="常用工具">常用工具</a>
+                          <a class="tag" href="/tags/#Jmeter" title="Jmeter">Jmeter</a>
                         
                     </div>
                 </section>
@@ -283,8 +291,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "hexo-theme-huxblog";
-    var disqus_identifier = "http://yoursite.com/2015/07/06/adb端口被占用/";
-    var disqus_url = "http://yoursite.com/2015/07/06/adb端口被占用/";
+    var disqus_identifier = "http://yoursite.com/2017/07/23/Jmeter连接数据库/";
+    var disqus_url = "http://yoursite.com/2017/07/23/Jmeter连接数据库/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
